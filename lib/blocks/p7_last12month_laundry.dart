@@ -12,6 +12,12 @@ class _LastYearLaundryState extends State<LastYearLaundry> {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints.expand(),
+      margin: EdgeInsets.fromLTRB(
+        20.w,
+        20.w,
+        10.w,
+        20.w,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -28,7 +34,7 @@ class _LastYearLaundryState extends State<LastYearLaundry> {
               color: Colors.blue[50],
             ),
             child: Text(
-              "Last 12 months Laundry data ",
+              "Monthly Performance",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.blueGrey,

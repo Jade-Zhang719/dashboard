@@ -30,13 +30,27 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 75.h,
+      constraints: BoxConstraints.expand(),
+      margin: EdgeInsets.fromLTRB(0, 20.w, 20.w, 20.w),
+      padding: EdgeInsets.only(left: 20.w),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            offset: Offset(2.0, 2.0),
+            blurRadius: 5.0,
+            spreadRadius: 2.0,
+          )
+        ],
+        color: Colors.white,
+      ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Container(
+              alignment: Alignment.centerLeft,
               child: Text(
                 "Total Stock On Hand",
                 style: TextStyle(
@@ -49,8 +63,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
           ),
           Expanded(
             child: Container(
-              // width: 150.w,
-              // alignment: Alignment.center,
+              alignment: Alignment.centerLeft,
               child: DropdownButton<String>(
                 dropdownColor: Colors.white,
                 value: dropdownValue1,
@@ -80,8 +93,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
           ),
           Expanded(
             child: Container(
-              // width: 150.w,
-              // alignment: Alignment.center,
+              alignment: Alignment.centerLeft,
               child: DropdownButton<String>(
                 dropdownColor: Colors.white,
                 value: dropdownValue2,

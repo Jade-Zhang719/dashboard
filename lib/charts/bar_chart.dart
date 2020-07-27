@@ -43,7 +43,6 @@ class RecordsBarChartState extends State<RecordsBarChart> {
         color: Colors.white,
       ),
       padding: EdgeInsets.fromLTRB(25.w, 20.w, 20.w, 10.w),
-      margin: EdgeInsets.fromLTRB(0, 20.w, 0, 20.w),
       child: BarChart(
         BarChartData(
           maxY: 20,

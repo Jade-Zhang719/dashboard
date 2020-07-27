@@ -12,6 +12,7 @@ class _LastTenRecordsState extends State<LastTenRecords> {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints.expand(),
+      margin: EdgeInsets.only(left: 20.w),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -20,7 +21,7 @@ class _LastTenRecordsState extends State<LastTenRecords> {
               Container(
                 margin: EdgeInsets.only(left: 20.w),
                 child: Text(
-                  "Total Status",
+                  "Volume Today  Loan: 123  Return: 123",
                   style: TextStyle(
                     color: Colors.blueGrey,
                     fontSize: 20.w,
@@ -29,30 +30,30 @@ class _LastTenRecordsState extends State<LastTenRecords> {
               ),
             ],
           ),
-          Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(left: 20.w),
-                child: Text(
-                  "Loan: 123",
-                  style: TextStyle(
-                    color: Colors.blueGrey,
-                    fontSize: 20.w,
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 20.w),
-                child: Text(
-                  "Return: 123",
-                  style: TextStyle(
-                    color: Colors.blueGrey,
-                    fontSize: 20.w,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   children: [
+          //     Container(
+          //       margin: EdgeInsets.only(left: 20.w),
+          //       child: Text(
+          //         "Loan: 123",
+          //         style: TextStyle(
+          //           color: Colors.blueGrey,
+          //           fontSize: 20.w,
+          //         ),
+          //       ),
+          //     ),
+          //     Container(
+          //       margin: EdgeInsets.only(left: 20.w),
+          //       child: Text(
+          //         "Return: 123",
+          //         style: TextStyle(
+          //           color: Colors.blueGrey,
+          //           fontSize: 20.w,
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
           RecordsLineChart(),
           Row(
             mainAxisSize: MainAxisSize.max,

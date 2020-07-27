@@ -28,19 +28,19 @@ class _TodayLoanState extends State<TodayLoan> {
       child: Stack(
         children: [
           Container(
-            padding: EdgeInsets.only(left: 20),
+            padding: EdgeInsets.only(left: 20.w),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const <Widget>[
+              children: [
                 Indicator(
                   color: Color(0xff0293ee),
                   text: 'Shirts',
                   isSquare: true,
                 ),
                 SizedBox(
-                  height: 4,
+                  height: 4.h,
                 ),
                 Indicator(
                   color: Color(0xfff8b250),
@@ -48,7 +48,7 @@ class _TodayLoanState extends State<TodayLoan> {
                   isSquare: true,
                 ),
                 SizedBox(
-                  height: 4,
+                  height: 4.h,
                 ),
                 Indicator(
                   color: Color(0xff845bef),
@@ -56,7 +56,7 @@ class _TodayLoanState extends State<TodayLoan> {
                   isSquare: true,
                 ),
                 SizedBox(
-                  height: 4,
+                  height: 4.h,
                 ),
                 Indicator(
                   color: Color(0xff13d38e),
@@ -64,7 +64,7 @@ class _TodayLoanState extends State<TodayLoan> {
                   isSquare: true,
                 ),
                 SizedBox(
-                  height: 18,
+                  height: 18.h,
                 ),
               ],
             ),
@@ -74,9 +74,9 @@ class _TodayLoanState extends State<TodayLoan> {
             child: Text(
               "1000",
               style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 60,
-                  fontWeight: FontWeight.bold),
+                color: Colors.blue,
+                fontSize: 40.w,
+              ),
             ),
           )
         ],

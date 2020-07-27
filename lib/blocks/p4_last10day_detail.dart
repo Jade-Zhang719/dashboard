@@ -12,8 +12,8 @@ class _LastTenDetailsState extends State<LastTenDetails> {
   Widget build(BuildContext context) {
     Container _stockCard(String variety) {
       return Container(
-        width: 375.w,
-        height: 90.h,
+        width: 360.w,
+        height: 85.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           color: Colors.white,

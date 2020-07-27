@@ -36,7 +36,7 @@ class _LoanPieChartState extends State<LoanPieChart> {
                       show: false,
                     ),
                     sectionsSpace: 10.w,
-                    centerSpaceRadius: 100.w,
+                    centerSpaceRadius: 80.w,
                     sections: showingSections()),
               ),
             ),

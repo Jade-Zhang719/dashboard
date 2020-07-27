@@ -56,76 +56,53 @@ class _MyHomePageState extends State<MyHomePage> {
                 direction: Axis.horizontal,
                 children: [
                   Expanded(
+                    flex: 7,
                     child: Flex(
                       direction: Axis.vertical,
                       children: [
                         Expanded(
-                          flex: 1,
-                          child: Container(
-                            child: Flex(
-                              direction: Axis.horizontal,
-                              children: [
-                                Expanded(
-                                  flex: 7,
-                                  child: StockEach(),
-                                ),
-                                Expanded(
-                                  flex: 3,
-                                  child: Container(
-                                    child: RangeDataLabel(),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                          flex: 5,
+                          child: StockEach(),
                         ),
                         Expanded(
-                          flex: 4,
-                          child: Container(
-                            child: Flex(
-                              direction: Axis.horizontal,
-                              children: [
-                                Expanded(
-                                  flex: 13,
-                                  child: Container(
-                                    child: LastTenRecords(),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 8,
-                                  child: Container(
-                                    child: LastTenDetails(),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 9,
-                                  child: Container(
-                                    child: TodayLoan(),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
+                          flex: 15,
                           child: Flex(
                             direction: Axis.horizontal,
                             children: [
                               Expanded(
-                                flex: 7,
-                                child: Container(
-                                  child: LastYearLaundry(),
-                                ),
+                                flex: 5,
+                                child: LastTenRecords(),
                               ),
                               Expanded(
                                 flex: 3,
-                                child: Container(
-                                  child: RatingTable(),
-                                ),
+                                child: LastTenDetails(),
                               ),
                             ],
                           ),
+                        ),
+                        Expanded(
+                          flex: 8,
+                          child: LastYearLaundry(),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Flex(
+                      direction: Axis.vertical,
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: RangeDataLabel(),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: TodayLoan(),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: RatingTable(),
                         ),
                       ],
                     ),
@@ -136,8 +113,9 @@ class _MyHomePageState extends State<MyHomePage> {
             Align(
               alignment: Alignment.topRight,
               child: Container(
-                width: 160.w,
-                height: 150.h,
+                width: 250.w,
+                height: 280.h,
+                margin: EdgeInsets.only(right: 20.w),
                 child: getRangeDataLabelExample(),
               ),
             ),

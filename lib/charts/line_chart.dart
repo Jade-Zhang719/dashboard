@@ -12,7 +12,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
   Widget build(BuildContext context) {
     return Container(
       height: 200.h,
-      width: 600.w,
+      width: 650.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: Colors.white,

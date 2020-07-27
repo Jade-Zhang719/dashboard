@@ -22,7 +22,7 @@ class _StockEachState extends State<StockEach> {
                   : ClothIcons.Accessories;
       return Container(
         width: 240.w,
-        height: 75.h,
+        height: 85.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           boxShadow: [
@@ -40,7 +40,7 @@ class _StockEachState extends State<StockEach> {
           children: [
             Container(
               width: 75.w,
-              height: 75.h,
+              height: 85.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(5),
@@ -65,7 +65,7 @@ class _StockEachState extends State<StockEach> {
                     "${stockPercent.toString()}%",
                     style: TextStyle(
                       color: Colors.blueGrey,
-                      fontSize: 15.w,
+                      fontSize: 10.w,
                     ),
                   ),
                 ),
@@ -76,10 +76,11 @@ class _StockEachState extends State<StockEach> {
               margin: EdgeInsets.only(right: 10.w),
               alignment: Alignment.center,
               child: Text(
-                variety,
+                "Stock On Hand of $variety",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
-                  fontSize: 15.w,
+                  fontSize: 10.w,
                 ),
               ),
             ),
@@ -90,8 +91,10 @@ class _StockEachState extends State<StockEach> {
 
     return Container(
       constraints: BoxConstraints.expand(),
+      margin: EdgeInsets.fromLTRB(20.w, 20.w, 20.w, 0),
+      alignment: Alignment.topLeft,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _stockCard("T-shirt", 40),
           _stockCard("Trousers", 30),
