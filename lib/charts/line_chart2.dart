@@ -18,6 +18,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     return Container(
       height: 75.h,
       width: 200.w,
+      alignment: Alignment.center,
       child: LineChart(
         mainDataLight(),
       ),
@@ -29,6 +30,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
       gridData: FlGridData(
         show: true,
         drawVerticalLine: true,
+        checkToShowHorizontalLine: (value) => value % 2 == 0,
         getDrawingHorizontalLine: (value) {
           return FlLine(
             color: Colors.grey[400],

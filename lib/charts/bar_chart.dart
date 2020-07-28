@@ -46,15 +46,16 @@ class RecordsBarChartState extends State<RecordsBarChart> {
       child: BarChart(
         BarChartData(
           maxY: 20,
+          minY: 0,
           titlesData: FlTitlesData(
             show: true,
             bottomTitles: SideTitles(
               showTitles: true,
               textStyle: TextStyle(
-                  color: const Color(0xff7589a2),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14),
-              margin: 20,
+                color: Color(0xff7589a2),
+                fontSize: 14.w,
+              ),
+              margin: 20.w,
               getTitles: (double value) {
                 switch (value.toInt()) {
                   case 0:
@@ -89,18 +90,18 @@ class RecordsBarChartState extends State<RecordsBarChart> {
             leftTitles: SideTitles(
               showTitles: true,
               textStyle: TextStyle(
-                  color: const Color(0xff7589a2),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14),
-              margin: 32,
-              reservedSize: 14,
+                color: Color(0xff7589a2),
+                fontSize: 14.w,
+              ),
+              margin: 24.w,
+              reservedSize: 14.w,
               getTitles: (value) {
                 if (value == 0) {
-                  return '1K';
+                  return '0';
                 } else if (value == 10) {
+                  return '1K';
+                } else if (value == 20) {
                   return '5K';
-                } else if (value == 19) {
-                  return '10K';
                 } else {
                   return '';
                 }
@@ -110,6 +111,23 @@ class RecordsBarChartState extends State<RecordsBarChart> {
           borderData: FlBorderData(
             show: false,
           ),
+          gridData: FlGridData(
+            show: true,
+            drawVerticalLine: true,
+            checkToShowHorizontalLine: (value) => value % 3 == 0,
+            getDrawingHorizontalLine: (value) {
+              return FlLine(
+                color: Colors.grey[200],
+                strokeWidth: 1,
+              );
+            },
+            getDrawingVerticalLine: (value) {
+              return FlLine(
+                color: Colors.grey[200],
+                strokeWidth: 1,
+              );
+            },
+          ),
           barGroups: barGroups,
         ),
       ),
@@ -117,13 +135,22 @@ class RecordsBarChartState extends State<RecordsBarChart> {
   }
 
   BarChartGroupData makeGroupData(int x, double y) {
-    return BarChartGroupData(barsSpace: 4, x: x, barRods: [
-      BarChartRodData(
-        y: y,
-        color: Colors.blue,
-        width: 40.w,
-        borderRadius: BorderRadius.circular(2),
-      ),
-    ]);
+    return BarChartGroupData(
+      barsSpace: 4.w,
+      x: x,
+      barRods: [
+        BarChartRodData(
+          y: y,
+          color: Colors.blue,
+          width: 40.w,
+          borderRadius: BorderRadius.circular(2),
+          backDrawRodData: BackgroundBarChartRodData(
+            show: true,
+            y: 20,
+            color: Colors.grey[200],
+          ),
+        ),
+      ],
+    );
   }
 }

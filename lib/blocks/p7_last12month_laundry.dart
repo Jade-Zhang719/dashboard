@@ -1,3 +1,5 @@
+import 'package:dashboard/items/optionButton.dart';
+
 import '../charts/bar_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +26,6 @@ class _LastYearLaundryState extends State<LastYearLaundry> {
           Container(
             width: 200.w,
             height: 150.h,
-            alignment: Alignment.center,
             padding: EdgeInsets.all(15.w),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -33,13 +34,18 @@ class _LastYearLaundryState extends State<LastYearLaundry> {
               ),
               color: Colors.blue[50],
             ),
-            child: Text(
-              "Monthly Performance",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.blueGrey,
-                fontSize: 25.w,
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  "Monthly Performance",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 15.w,
+                  ),
+                ),
+                OptionButton(txSize: 10.w),
+              ],
             ),
           ),
           RecordsBarChart(),

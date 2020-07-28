@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../clothIcon.dart';
+import '../items/clothIcon.dart';
 import '../charts/pie_chart.dart';
 
 class StockEach extends StatefulWidget {

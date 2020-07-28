@@ -11,7 +11,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.h,
+      height: 240.h,
       width: 650.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
@@ -34,6 +34,7 @@ LineChartData sampleData() {
     gridData: FlGridData(
       show: true,
       drawVerticalLine: true,
+      checkToShowHorizontalLine: (value) => value % 10 == 0,
       getDrawingHorizontalLine: (value) {
         return FlLine(
           color: Colors.grey[400],
