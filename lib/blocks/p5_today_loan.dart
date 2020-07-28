@@ -52,14 +52,19 @@ class _TodayLoanState extends State<TodayLoan> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Volume Today",
+                  "Total Loan by Categories",
                   style: TextStyle(
                     color: Colors.blueGrey,
-                    fontSize: 20.w,
+                    fontSize: 15.w,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                OptionButton(txSize: 15.w),
+                Container(
+                  margin: EdgeInsets.only(top: 20.w),
+                  child: OptionButton(
+                    txSize: 10.w,
+                  ),
+                ),
               ],
             ),
           ),
