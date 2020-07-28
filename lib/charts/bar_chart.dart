@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,18 +17,18 @@ class RecordsBarChartState extends State<RecordsBarChart> {
     super.initState();
 
     barGroups = [
-      makeGroupData(0, 5),
-      makeGroupData(1, 16),
-      makeGroupData(2, 18),
-      makeGroupData(3, 20),
-      makeGroupData(4, 17),
-      makeGroupData(5, 19),
-      makeGroupData(6, 12),
-      makeGroupData(7, 18),
-      makeGroupData(8, 6),
-      makeGroupData(9, 3),
-      makeGroupData(10, 15),
-      makeGroupData(11, 9),
+      makeGroupData(0, Random().nextDouble() * 20),
+      makeGroupData(1, Random().nextDouble() * 20),
+      makeGroupData(2, Random().nextDouble() * 20),
+      makeGroupData(3, Random().nextDouble() * 20),
+      makeGroupData(4, Random().nextDouble() * 20),
+      makeGroupData(5, Random().nextDouble() * 20),
+      makeGroupData(6, Random().nextDouble() * 20),
+      makeGroupData(7, Random().nextDouble() * 20),
+      makeGroupData(8, Random().nextDouble() * 20),
+      makeGroupData(9, Random().nextDouble() * 20),
+      makeGroupData(10, Random().nextDouble() * 20),
+      makeGroupData(11, Random().nextDouble() * 20),
     ];
   }
 

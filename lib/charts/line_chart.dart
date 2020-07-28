@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'dart:math';
 
 class RecordsLineChart extends StatefulWidget {
   @override
@@ -140,16 +141,16 @@ List<LineChartBarData> linesBarData() {
   return [
     LineChartBarData(
       spots: [
-        FlSpot(1, 42),
-        FlSpot(2, 31),
-        FlSpot(3, 14),
-        FlSpot(4, 18),
-        FlSpot(5, 10),
-        FlSpot(6, 20),
-        FlSpot(7, 35),
-        FlSpot(8, 22),
-        FlSpot(9, 40),
-        FlSpot(10, 50),
+        FlSpot(1, Random().nextDouble() * 50),
+        FlSpot(2, Random().nextDouble() * 50),
+        FlSpot(3, Random().nextDouble() * 50),
+        FlSpot(4, Random().nextDouble() * 50),
+        FlSpot(5, Random().nextDouble() * 50),
+        FlSpot(6, Random().nextDouble() * 50),
+        FlSpot(7, Random().nextDouble() * 50),
+        FlSpot(8, Random().nextDouble() * 50),
+        FlSpot(9, Random().nextDouble() * 50),
+        FlSpot(10, Random().nextDouble() * 50),
       ],
       isCurved: true,
       curveSmoothness: 0,
@@ -168,16 +169,16 @@ List<LineChartBarData> linesBarData() {
     ),
     LineChartBarData(
       spots: [
-        FlSpot(1, 10),
-        FlSpot(2, 40),
-        FlSpot(3, 18),
-        FlSpot(4, 50),
-        FlSpot(5, 20),
-        FlSpot(6, 22),
-        FlSpot(7, 35),
-        FlSpot(8, 42),
-        FlSpot(9, 31),
-        FlSpot(10, 14),
+        FlSpot(1, Random().nextDouble() * 50),
+        FlSpot(2, Random().nextDouble() * 50),
+        FlSpot(3, Random().nextDouble() * 50),
+        FlSpot(4, Random().nextDouble() * 50),
+        FlSpot(5, Random().nextDouble() * 50),
+        FlSpot(6, Random().nextDouble() * 50),
+        FlSpot(7, Random().nextDouble() * 50),
+        FlSpot(8, Random().nextDouble() * 50),
+        FlSpot(9, Random().nextDouble() * 50),
+        FlSpot(10, Random().nextDouble() * 50),
       ],
       isCurved: true,
       curveSmoothness: 0,

@@ -1,6 +1,9 @@
-import '../charts/line_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'dart:math';
+
+import '../charts/line_chart.dart';
+import '../items/optionButton.dart';
 
 class LastTenRecords extends StatefulWidget {
   @override
@@ -8,6 +11,16 @@ class LastTenRecords extends StatefulWidget {
 }
 
 class _LastTenRecordsState extends State<LastTenRecords> {
+  int loanQty;
+  int returnQty;
+
+  @override
+  void initState() {
+    loanQty = Random().nextInt(1000);
+    returnQty = Random().nextInt(1000);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,43 +30,35 @@ class _LastTenRecordsState extends State<LastTenRecords> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
                 margin: EdgeInsets.only(left: 20.w),
                 child: Text(
-                  "Volume Today  Loan: 123  Return: 123",
+                  "Last 10 Days Records ",
                   style: TextStyle(
                     color: Colors.blueGrey,
                     fontSize: 20.w,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
+              Container(
+                margin: EdgeInsets.only(left: 20.w),
+                child: Text(
+                  "Loan: $loanQty  Return: $returnQty",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 15.w,
+                  ),
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                child: OptionButton(txSize: 10.w),
+              ),
             ],
           ),
-          // Row(
-          //   children: [
-          //     Container(
-          //       margin: EdgeInsets.only(left: 20.w),
-          //       child: Text(
-          //         "Loan: 123",
-          //         style: TextStyle(
-          //           color: Colors.blueGrey,
-          //           fontSize: 20.w,
-          //         ),
-          //       ),
-          //     ),
-          //     Container(
-          //       margin: EdgeInsets.only(left: 20.w),
-          //       child: Text(
-          //         "Return: 123",
-          //         style: TextStyle(
-          //           color: Colors.blueGrey,
-          //           fontSize: 20.w,
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
           RecordsLineChart(),
           Row(
             mainAxisSize: MainAxisSize.max,

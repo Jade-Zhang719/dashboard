@@ -36,56 +36,73 @@ class _OptionButtonState extends State<OptionButton> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          DropdownButton<String>(
-            dropdownColor: Colors.white,
-            value: dropdownValue1,
-            onChanged: (String newValue) {
-              setState(() {
-                dropdownValue1 = newValue;
-              });
-            },
-            underline: Container(),
-            elevation: 6,
-            items: options1.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Container(
-                  child: Text(
-                    value,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: txSize,
+          Container(
+            height: txSize * 3,
+            child: DropdownButton<String>(
+              iconSize: txSize * 2,
+              dropdownColor: Colors.white,
+              value: dropdownValue1,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: txSize,
+              ),
+              onChanged: (String newValue) {
+                setState(() {
+                  dropdownValue1 = newValue;
+                });
+              },
+              underline: Container(),
+              elevation: 6,
+              items: options1.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Container(
+                    child: Text(
+                      value,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: txSize,
+                      ),
                     ),
                   ),
-                ),
-              );
-            }).toList(),
+                );
+              }).toList(),
+            ),
           ),
-          DropdownButton<String>(
-            dropdownColor: Colors.white,
-            value: dropdownValue2,
-            onChanged: (String newValue) {
-              setState(() {
-                dropdownValue2 = newValue;
-              });
-            },
-            underline: Container(),
-            elevation: 6,
-            items: options2.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Container(
-                  child: Text(
-                    value,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: txSize,
+          Container(
+            height: txSize * 3,
+            child: DropdownButton<String>(
+              iconSize: txSize * 2,
+              dropdownColor: Colors.white,
+              value: dropdownValue2,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: txSize,
+              ),
+              onChanged: (String newValue) {
+                setState(() {
+                  dropdownValue2 = newValue;
+                });
+              },
+              underline: Container(),
+              elevation: 6,
+              items: options2.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Container(
+                    child: Text(
+                      value,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: txSize,
+                      ),
                     ),
                   ),
-                ),
-              );
-            }).toList(),
+                );
+              }).toList(),
+            ),
           ),
         ],
       ),

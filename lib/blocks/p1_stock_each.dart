@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../items/clothIcon.dart';
 import '../charts/pie_chart.dart';
+import '../items/optionButton.dart';
 
 class StockEach extends StatefulWidget {
   @override
@@ -10,6 +13,20 @@ class StockEach extends StatefulWidget {
 }
 
 class _StockEachState extends State<StockEach> {
+  int shirts;
+  int trousers;
+  int jackets;
+  int accessories;
+
+  @override
+  void initState() {
+    shirts = Random().nextInt(1000);
+    trousers = Random().nextInt(1000);
+    jackets = Random().nextInt(1000);
+    accessories = Random().nextInt(1000);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Container _stockCard(String variety, double stockPercent) {
@@ -73,15 +90,22 @@ class _StockEachState extends State<StockEach> {
             ),
             Container(
               width: 90.w,
+              height: 70.h,
               margin: EdgeInsets.only(right: 10.w),
               alignment: Alignment.center,
-              child: Text(
-                "Stock On Hand of $variety",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 10.w,
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    "Stock On Hand of $variety",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 10.w,
+                    ),
+                  ),
+                  OptionButton(txSize: 5.w),
+                ],
               ),
             ),
           ],
@@ -96,10 +120,10 @@ class _StockEachState extends State<StockEach> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _stockCard("T-shirt", 40),
-          _stockCard("Trousers", 30),
-          _stockCard("Jacket", 10),
-          _stockCard("Accessories", 100),
+          _stockCard("T-shirt", (shirts / 10).toDouble()),
+          _stockCard("Trousers", (trousers / 10).toDouble()),
+          _stockCard("Jacket", (jackets / 10).toDouble()),
+          _stockCard("Accessories", (accessories / 10).toDouble()),
         ],
       ),
     );
