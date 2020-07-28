@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -117,13 +119,13 @@ class _LineChartSample2State extends State<LineChartSample2> {
       lineBarsData: [
         LineChartBarData(
           spots: [
-            FlSpot(1, 3),
-            FlSpot(2, 2),
-            FlSpot(3, 4),
-            FlSpot(5, 5),
-            FlSpot(7, 3.1),
-            FlSpot(8, 4),
-            FlSpot(10, 3),
+            FlSpot(1, Random().nextDouble() * 5),
+            FlSpot(2, Random().nextDouble() * 5),
+            FlSpot(3, Random().nextDouble() * 5),
+            FlSpot(5, Random().nextDouble() * 5),
+            FlSpot(7, Random().nextDouble() * 5),
+            FlSpot(8, Random().nextDouble() * 5),
+            FlSpot(10, Random().nextDouble() * 5),
           ],
           isCurved: false,
           colors: gradientColors,

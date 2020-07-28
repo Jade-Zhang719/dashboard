@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,6 +9,21 @@ class RatingTable extends StatefulWidget {
 }
 
 class _RatingTableState extends State<RatingTable> {
+  int shirts;
+  int pants;
+  int jackets;
+  int accessories;
+  int total;
+  @override
+  void initState() {
+    shirts = Random().nextInt(1000);
+    pants = Random().nextInt(1000);
+    jackets = Random().nextInt(1000);
+    accessories = Random().nextInt(1000);
+    total = shirts + pants + jackets + accessories;
+    super.initState();
+  }
+
   TableRow _tableRowBuilder(
     String index,
     String id,
@@ -21,7 +38,7 @@ class _RatingTableState extends State<RatingTable> {
       bgColor = Colors.white;
       txColor = Colors.black;
     } else {
-      bgColor = Colors.blue;
+      bgColor = Colors.blueAccent;
       txColor = Colors.white;
     }
     return TableRow(
@@ -83,7 +100,7 @@ class _RatingTableState extends State<RatingTable> {
       height: 250.w,
       alignment: Alignment.centerLeft,
       child: Table(
-        border: TableBorder.all(),
+        border: TableBorder.symmetric(inside: BorderSide(color: Colors.grey)),
         columnWidths: {
           0: FixedColumnWidth(40.w),
           1: FixedColumnWidth(100.w),
@@ -92,18 +109,72 @@ class _RatingTableState extends State<RatingTable> {
           4: FixedColumnWidth(100.w),
         },
         children: [
-          _tableRowBuilder(
-            "#",
-            "Uniform ID".toUpperCase(),
-            "Qty".toUpperCase(),
-            "Date".toUpperCase(),
-            "Date".toUpperCase(),
-            1,
-          ),
+          TableRow(children: [
+            Center(
+              child: Container(
+                padding: EdgeInsets.all(8.w),
+                child: Text(
+                  "#",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 10.w,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                padding: EdgeInsets.all(8.w),
+                child: Text(
+                  "Uniform ID".toUpperCase(),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 10.w,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                padding: EdgeInsets.all(8.w),
+                child: Text(
+                  "Qty".toUpperCase(),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 10.w,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                padding: EdgeInsets.all(8.w),
+                child: Text(
+                  "Date".toUpperCase(),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 10.w,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                padding: EdgeInsets.all(8.w),
+                child: Text(
+                  "Time".toUpperCase(),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 10.w,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ]),
           _tableRowBuilder(
             "1",
             "100000086",
-            "10",
+            "$shirts",
             "2020/3/3",
             "10:30",
             2,
@@ -111,7 +182,7 @@ class _RatingTableState extends State<RatingTable> {
           _tableRowBuilder(
             "2",
             "100000086",
-            "10",
+            "$pants",
             "2020/3/3",
             "10:30",
             1,
@@ -119,7 +190,7 @@ class _RatingTableState extends State<RatingTable> {
           _tableRowBuilder(
             "3",
             "100000086",
-            "10",
+            "$jackets",
             "2020/3/3",
             "10:30",
             2,
@@ -127,7 +198,7 @@ class _RatingTableState extends State<RatingTable> {
           _tableRowBuilder(
             "4",
             "100000086",
-            "10",
+            "$pants",
             "2020/3/3",
             "10:30",
             1,

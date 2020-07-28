@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:syncfusion_flutter_core/core.dart';
+
 import 'blocks/p1_stock_each.dart';
 import 'blocks/p2_stock_level.dart';
 import 'blocks/p3_last10day_records.dart';
@@ -8,7 +9,7 @@ import 'blocks/p4_last10day_detail.dart';
 import 'blocks/p5_today_loan.dart';
 import 'blocks/p6_rating_table.dart';
 import 'blocks/p7_last12month_laundry.dart';
-import 'charts/range_data.dart';
+import 'charts/gauge_chart.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -116,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 250.w,
                 height: 280.h,
                 margin: EdgeInsets.only(right: 20.w),
-                child: getRangeDataLabelExample(),
+                child: StockGaugeChart(),
               ),
             ),
           ],

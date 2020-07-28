@@ -1,8 +1,8 @@
-import 'package:dashboard/items/optionButton.dart';
-
-import '../charts/bar_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../charts/bar_chart.dart';
+import '../items/optionButton.dart';
 
 class LastYearLaundry extends StatefulWidget {
   @override
@@ -44,7 +44,9 @@ class _LastYearLaundryState extends State<LastYearLaundry> {
                     fontSize: 15.w,
                   ),
                 ),
-                OptionButton(txSize: 10.w),
+                OptionButton(
+                  txSize: 10.w,
+                ),
               ],
             ),
           ),
