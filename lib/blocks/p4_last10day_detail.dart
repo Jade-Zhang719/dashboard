@@ -1,6 +1,9 @@
-import '../charts/line_chart2.dart';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../charts/line_chart2.dart';
 
 class LastTenDetails extends StatefulWidget {
   @override
@@ -8,9 +11,24 @@ class LastTenDetails extends StatefulWidget {
 }
 
 class _LastTenDetailsState extends State<LastTenDetails> {
+  int shirts;
+  int pants;
+  int jackets;
+  int accessories;
+  int total;
+  @override
+  void initState() {
+    shirts = Random().nextInt(1000);
+    pants = Random().nextInt(1000);
+    jackets = Random().nextInt(1000);
+    accessories = Random().nextInt(1000);
+    total = shirts + pants + jackets + accessories;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    Container _stockCard(String variety) {
+    Container _stockCard(String variety, int amount) {
       return Container(
         width: 360.w,
         height: 85.h,
@@ -46,7 +64,7 @@ class _LastTenDetailsState extends State<LastTenDetails> {
                   ),
                   Container(
                     child: Text(
-                      "2435",
+                      "$amount",
                       style: TextStyle(
                           color: Color(0xff2F4860),
                           fontSize: 20.w,
@@ -67,10 +85,10 @@ class _LastTenDetailsState extends State<LastTenDetails> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _stockCard("T-shirt"),
-          _stockCard("Trousers"),
-          _stockCard("Jacket"),
-          _stockCard("Accessories"),
+          _stockCard("T-shirt", shirts),
+          _stockCard("Trousers", pants),
+          _stockCard("Jacket", jackets),
+          _stockCard("Accessories", accessories),
         ],
       ),
     );

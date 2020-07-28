@@ -3,12 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoanPieChart extends StatefulWidget {
+  final int shirts;
+  final int pants;
+  final int jackets;
+  final int accessories;
+
+  const LoanPieChart(
+      {Key key, this.shirts, this.pants, this.jackets, this.accessories})
+      : super(key: key);
   @override
   State<StatefulWidget> createState() => _LoanPieChartState();
 }
 
 class _LoanPieChartState extends State<LoanPieChart> {
   int touchedIndex;
+
+  int shirts;
+  int pants;
+  int jackets;
+  int accessories;
+  int total;
+  @override
+  void initState() {
+    shirts = widget.shirts;
+    pants = widget.pants;
+    jackets = widget.jackets;
+    accessories = widget.accessories;
+    total = shirts + pants + jackets + accessories;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,8 +79,8 @@ class _LoanPieChartState extends State<LoanPieChart> {
         case 0:
           return PieChartSectionData(
             color: const Color(0xff0293ee),
-            value: 40,
-            title: '400',
+            value: shirts / total * 100,
+            title: '$shirts',
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize,
@@ -66,8 +90,8 @@ class _LoanPieChartState extends State<LoanPieChart> {
         case 1:
           return PieChartSectionData(
             color: const Color(0xfff8b250),
-            value: 30,
-            title: '300',
+            value: pants / total * 100,
+            title: '$pants',
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize,
@@ -77,8 +101,8 @@ class _LoanPieChartState extends State<LoanPieChart> {
         case 2:
           return PieChartSectionData(
             color: const Color(0xff845bef),
-            value: 15,
-            title: '150',
+            value: jackets / total * 100,
+            title: '$jackets',
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize,
@@ -88,8 +112,8 @@ class _LoanPieChartState extends State<LoanPieChart> {
         case 3:
           return PieChartSectionData(
             color: const Color(0xff13d38e),
-            value: 15,
-            title: '150',
+            value: accessories / total * 100,
+            title: '$accessories',
             radius: radius,
             titleStyle: TextStyle(
                 fontSize: fontSize,

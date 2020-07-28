@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../charts/indicator.dart';
 import '../charts/pie_chart2.dart';
 
@@ -9,6 +12,21 @@ class TodayLoan extends StatefulWidget {
 }
 
 class _TodayLoanState extends State<TodayLoan> {
+  int shirts;
+  int pants;
+  int jackets;
+  int accessories;
+  int total;
+  @override
+  void initState() {
+    shirts = Random().nextInt(1000);
+    pants = Random().nextInt(1000);
+    jackets = Random().nextInt(1000);
+    accessories = Random().nextInt(1000);
+    total = shirts + pants + jackets + accessories;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -69,10 +87,15 @@ class _TodayLoanState extends State<TodayLoan> {
               ],
             ),
           ),
-          LoanPieChart(),
+          LoanPieChart(
+            shirts: shirts,
+            pants: pants,
+            jackets: jackets,
+            accessories: accessories,
+          ),
           Center(
             child: Text(
-              "1000",
+              "$total",
               style: TextStyle(
                 color: Colors.blue,
                 fontSize: 40.w,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OptionButton extends StatefulWidget {
   final double txSize;
@@ -47,7 +46,7 @@ class _OptionButtonState extends State<OptionButton> {
               });
             },
             underline: Container(),
-            elevation: 6.w,
+            elevation: 6,
             items: options1.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -72,7 +71,7 @@ class _OptionButtonState extends State<OptionButton> {
               });
             },
             underline: Container(),
-            elevation: 6.w,
+            elevation: 6,
             items: options2.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
