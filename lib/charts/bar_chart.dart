@@ -135,7 +135,7 @@ class RecordsBarChartState extends State<RecordsBarChart> {
           ),
           barGroups: barGroups,
         ),
-        swapAnimationDuration: Duration(milliseconds: 3500),
+        swapAnimationDuration: Duration(seconds: 1),
       ),
     );
   }

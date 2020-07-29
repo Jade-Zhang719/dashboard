@@ -101,7 +101,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                         Colors.indigo,
                         Colors.red
                       ],
-                      duration: Duration(milliseconds: 3500),
+                      duration: Duration(seconds: 1),
                     ),
                   ),
                 )
@@ -179,7 +179,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                         Colors.indigo,
                         Colors.red
                       ],
-                      duration: Duration(milliseconds: 3500),
+                      duration: Duration(seconds: 1),
                     ),
                   ),
                 ),
