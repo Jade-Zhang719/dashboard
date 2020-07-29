@@ -23,7 +23,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
       alignment: Alignment.center,
       child: LineChart(
         mainDataLight(),
-        swapAnimationDuration: Duration(milliseconds: 3500),
+        swapAnimationDuration: Duration(seconds: 1),
       ),
     );
   }

@@ -62,7 +62,7 @@ class _LoanPieChartState extends State<LoanPieChart> {
                   centerSpaceRadius: 80.w,
                   sections: showingSections(),
                 ),
-                swapAnimationDuration: Duration(milliseconds: 3500),
+                swapAnimationDuration: Duration(seconds: 1),
               ),
             ),
           ),

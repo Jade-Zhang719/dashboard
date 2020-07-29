@@ -1,7 +1,8 @@
+import 'dart:math';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'dart:math';
 
 class RecordsLineChart extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
       padding: EdgeInsets.all(20.w),
       child: LineChart(
         sampleData(),
-        swapAnimationDuration: Duration(milliseconds: 3500),
+        swapAnimationDuration: Duration(seconds: 1),
       ),
     );
   }
