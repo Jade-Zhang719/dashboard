@@ -55,7 +55,7 @@ LineChartData sampleData() {
         reservedSize: 15.w,
         textStyle: TextStyle(
           color: Colors.blueGrey,
-          fontSize: 12.w,
+          fontSize: 8.w,
         ),
         margin: 10.w,
         getTitles: (value) {

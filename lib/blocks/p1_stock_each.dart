@@ -31,9 +31,6 @@ class _StockEachState extends State<StockEach> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    print(width);
-    print(height);
-
     bool isMobile = height > width;
 
     Container _stockCard(String variety, double stockPercent) {
@@ -205,7 +202,6 @@ class _StockEachState extends State<StockEach> {
     return isMobile
         ? Container(
             constraints: BoxConstraints.expand(),
-            margin: EdgeInsets.all(5.w),
             alignment: Alignment.center,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

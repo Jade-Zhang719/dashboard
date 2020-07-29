@@ -122,7 +122,3 @@ class _StockGaugeChartState extends State<StockGaugeChart> {
     );
   }
 }
-
-// SfRadialGauge getRangeDataLabelExample() {
-
-// }

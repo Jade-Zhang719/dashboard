@@ -72,12 +72,40 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.indigo[50],
                 width: width,
                 height: height,
+                padding: EdgeInsets.all(5.w),
                 child: ListView(
                   children: [
                     Container(
-                      height: 265.h,
-                      width: width * 0.95,
+                      height: 260.h,
                       child: StockEach(),
+                    ),
+                    Container(
+                      height: 200.h,
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(top: 5.w, bottom: 10.w),
+                      child: RangeDataLabel(),
+                    ),
+                    Divider(
+                      height: 1,
+                      thickness: 1,
+                      color: Colors.blueGrey,
+                    ),
+                    Container(
+                      height: 335.h,
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(top: 5.w),
+                      child: LastTenRecords(),
+                    ),
+                    Container(
+                      height: 360.h,
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(top: 5.w, bottom: 10.w),
+                      child: LastTenDetails(),
+                    ),
+                    Divider(
+                      height: 1,
+                      thickness: 1,
+                      color: Colors.blueGrey,
                     ),
                   ],
                 ),

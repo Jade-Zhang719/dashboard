@@ -22,41 +22,80 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: BoxConstraints.expand(),
-      margin: EdgeInsets.fromLTRB(0, 20.w, 20.w, 20.w),
-      padding: EdgeInsets.only(left: 20.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey,
-            offset: Offset(2.0, 2.0),
-            blurRadius: 5.0,
-            spreadRadius: 2.0,
-          )
-        ],
-        color: Colors.white,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            child: Text(
-              "Total Stock On Hand",
-              style: TextStyle(
-                color: Colors.blueGrey,
-                fontSize: 15.w,
-                fontWeight: FontWeight.bold,
-              ),
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    bool isMobile = height > width;
+    return isMobile
+        ? Container(
+            constraints: BoxConstraints.expand(),
+            padding: EdgeInsets.only(left: 20.w),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(2.0, 2.0),
+                  blurRadius: 5.0,
+                  spreadRadius: 2.0,
+                )
+              ],
+              color: Colors.white,
             ),
-          ),
-          OptionButton(
-            txSize: 10.w,
-          ),
-        ],
-      ),
-    );
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  child: Text(
+                    "Total Stock On Hand",
+                    style: TextStyle(
+                      color: Colors.blueGrey,
+                      fontSize: 15.w,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                OptionButton(
+                  txSize: 10.w,
+                ),
+              ],
+            ),
+          )
+        : Container(
+            constraints: BoxConstraints.expand(),
+            margin: EdgeInsets.fromLTRB(0, 20.w, 20.w, 20.w),
+            padding: EdgeInsets.only(left: 20.w),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(2.0, 2.0),
+                  blurRadius: 5.0,
+                  spreadRadius: 2.0,
+                )
+              ],
+              color: Colors.white,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  child: Text(
+                    "Total Stock On Hand",
+                    style: TextStyle(
+                      color: Colors.blueGrey,
+                      fontSize: 15.w,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                OptionButton(
+                  txSize: 10.w,
+                ),
+              ],
+            ),
+          );
   }
 }
