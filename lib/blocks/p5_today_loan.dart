@@ -1,11 +1,11 @@
 import 'dart:math';
 
+import 'package:dashboard/charts/pie_chart3.dart';
 import 'package:dashboard/items/optionButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../charts/indicator.dart';
-import '../charts/pie_chart2.dart';
 
 class TodayLoan extends StatefulWidget {
   @override
@@ -112,7 +112,8 @@ class _TodayLoanState extends State<TodayLoan> {
           ),
           Container(
             margin: EdgeInsets.only(left: 80.w),
-            child: LoanPieChart(
+            child: DonutPieChart(
+              animate: true,
               shirts: shirts,
               pants: pants,
               jackets: jackets,

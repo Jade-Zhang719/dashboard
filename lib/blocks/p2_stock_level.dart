@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kdgaugeview/kdgaugeview.dart';
 
 import '../items/optionButton.dart';
 
@@ -10,12 +13,14 @@ class RangeDataLabel extends StatefulWidget {
 }
 
 class _RangeDataLabelState extends State<RangeDataLabel> {
-  int totalStock = 1000;
-  int stockOnHand = 500;
-  double percentage = 0;
+  int totalStock;
+  int stockOnHand;
+  double percentage;
 
   @override
   void initState() {
+    totalStock = Random().nextInt(1000);
+    stockOnHand = Random().nextInt(totalStock);
     percentage = stockOnHand / totalStock * 100;
     super.initState();
   }
@@ -77,23 +82,64 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
               ],
               color: Colors.white,
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
               children: [
-                Container(
-                  child: Text(
-                    "Total Stock On Hand",
-                    style: TextStyle(
-                      color: Colors.blueGrey,
-                      fontSize: 15.w,
-                      fontWeight: FontWeight.bold,
-                    ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        child: Text(
+                          "Total Stock On Hand",
+                          style: TextStyle(
+                            color: Colors.blueGrey,
+                            fontSize: 15.w,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      OptionButton(
+                        txSize: 10.w,
+                      ),
+                    ],
                   ),
                 ),
-                OptionButton(
-                  txSize: 10.w,
-                ),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    width: 400,
+                    height: 400,
+                    padding: EdgeInsets.only(top: 10.w),
+                    child: KdGaugeView(
+                      innerCirclePadding: 10.w,
+                      unitOfMeasurement: "Stock Level (%)",
+                      unitOfMeasurementTextStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 5.w),
+                      minMaxTextStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 5.w),
+                      speedTextStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.w),
+                      minSpeed: 0,
+                      maxSpeed: 100,
+                      speed: percentage,
+                      animate: true,
+                      alertSpeedArray: [40, 80, 100],
+                      alertColorArray: [
+                        Colors.orange,
+                        Colors.indigo,
+                        Colors.red
+                      ],
+                      duration: Duration(milliseconds: 3500),
+                    ),
+                  ),
+                )
               ],
             ),
           );

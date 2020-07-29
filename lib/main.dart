@@ -9,7 +9,6 @@ import 'blocks/p4_last10day_detail.dart';
 import 'blocks/p5_today_loan.dart';
 import 'blocks/p6_rating_table.dart';
 import 'blocks/p7_last12month_laundry.dart';
-import 'charts/gauge_chart.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -110,78 +109,65 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               )
-            : Stack(
-                children: [
-                  Container(
-                    color: Colors.indigo[50],
-                    child: Flex(
-                      direction: Axis.horizontal,
-                      children: [
-                        Expanded(
-                          flex: 7,
-                          child: Flex(
-                            direction: Axis.vertical,
-                            children: [
-                              Expanded(
-                                flex: 5,
-                                child: StockEach(),
-                              ),
-                              Expanded(
-                                flex: 15,
-                                child: Flex(
-                                  direction: Axis.horizontal,
-                                  children: [
-                                    Expanded(
-                                      flex: 5,
-                                      child: LastTenRecords(),
-                                    ),
-                                    Expanded(
-                                      flex: 3,
-                                      child: LastTenDetails(),
-                                    ),
-                                  ],
+            : Container(
+                color: Colors.indigo[50],
+                child: Flex(
+                  direction: Axis.horizontal,
+                  children: [
+                    Expanded(
+                      flex: 7,
+                      child: Flex(
+                        direction: Axis.vertical,
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: StockEach(),
+                          ),
+                          Expanded(
+                            flex: 15,
+                            child: Flex(
+                              direction: Axis.horizontal,
+                              children: [
+                                Expanded(
+                                  flex: 5,
+                                  child: LastTenRecords(),
                                 ),
-                              ),
-                              Expanded(
-                                flex: 8,
-                                child: LastYearLaundry(),
-                              ),
-                            ],
+                                Expanded(
+                                  flex: 3,
+                                  child: LastTenDetails(),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: Flex(
-                            direction: Axis.vertical,
-                            children: [
-                              Expanded(
-                                flex: 2,
-                                child: RangeDataLabel(),
-                              ),
-                              Expanded(
-                                flex: 3,
-                                child: TodayLoan(),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: RatingTable(),
-                              ),
-                            ],
+                          Expanded(
+                            flex: 8,
+                            child: LastYearLaundry(),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      width: 250.w,
-                      height: 280.h,
-                      margin: EdgeInsets.only(right: 20.w),
-                      child: StockGaugeChart(),
+                    Expanded(
+                      flex: 3,
+                      child: Flex(
+                        direction: Axis.vertical,
+                        children: [
+                          Expanded(
+                            flex: 7,
+                            child: RangeDataLabel(),
+                          ),
+                          Expanded(
+                            flex: 9,
+                            child: TodayLoan(),
+                          ),
+                          Expanded(
+                            flex: 6,
+                            child: RatingTable(),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
       ),
     );

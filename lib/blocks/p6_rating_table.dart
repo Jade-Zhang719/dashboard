@@ -99,6 +99,7 @@ class _RatingTableState extends State<RatingTable> {
       width: 450.w,
       height: 250.w,
       alignment: Alignment.centerLeft,
+      margin: EdgeInsets.fromLTRB(0, 20.w, 20.w, 20.w),
       child: Table(
         border: TableBorder.symmetric(inside: BorderSide(color: Colors.grey)),
         columnWidths: {
