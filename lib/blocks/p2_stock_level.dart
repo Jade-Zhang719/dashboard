@@ -153,7 +153,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                   child: Container(
                     width: 400.w,
                     height: 400.w,
-                    padding: EdgeInsets.only(top: 10.w),
+                    padding: EdgeInsets.only(top: 20.w, right: 20.w),
                     child: KdGaugeView(
                       innerCirclePadding: 10.w,
                       unitOfMeasurement: "Stock Level (%)",

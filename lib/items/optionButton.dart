@@ -39,7 +39,7 @@ class _OptionButtonState extends State<OptionButton> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            height: txSize * 3,
+            height: txSize * 4,
             child: DropdownButton<String>(
               iconSize: txSize * 2,
               dropdownColor: Colors.white,
@@ -72,7 +72,7 @@ class _OptionButtonState extends State<OptionButton> {
             ),
           ),
           Container(
-            height: txSize * 3,
+            height: txSize * 4,
             child: DropdownButton<String>(
               iconSize: txSize * 2,
               dropdownColor: Colors.white,

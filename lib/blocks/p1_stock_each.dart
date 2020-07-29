@@ -183,11 +183,11 @@ class _StockEachState extends State<StockEach> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          "Stock On Hand of $variety",
+                          "Stock of\n$variety",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
-                            fontSize: 10.w,
+                            fontSize: 8.w,
                           ),
                         ),
                         OptionButton(txSize: 5.w),

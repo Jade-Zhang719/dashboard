@@ -19,7 +19,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
   Widget build(BuildContext context) {
     return Container(
       height: 75.h,
-      width: 200.w,
+      width: 180.w,
       alignment: Alignment.center,
       child: LineChart(
         mainDataLight(),
@@ -72,13 +72,14 @@ class _LineChartSample2State extends State<LineChartSample2> {
             }
             return '';
           },
-          margin: 8,
+          margin: 5.w,
         ),
         leftTitles: SideTitles(
           showTitles: true,
+          reservedSize: 15.w,
           textStyle: TextStyle(
             color: Colors.blueGrey,
-            fontSize: 12.w,
+            fontSize: 8.w,
           ),
           getTitles: (value) {
             switch (value.toInt()) {
@@ -91,8 +92,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
             }
             return '';
           },
-          reservedSize: 28,
-          margin: 12,
+          margin: 5.w,
         ),
       ),
       borderData: FlBorderData(

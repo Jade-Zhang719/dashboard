@@ -40,7 +40,8 @@ class _LastTenDetailsState extends State<LastTenDetails> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
+            Expanded(
+              flex: 3,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -58,7 +59,7 @@ class _LastTenDetailsState extends State<LastTenDetails> {
                       "Loan by last 10 days",
                       style: TextStyle(
                           color: Colors.blue,
-                          fontSize: 10.w,
+                          fontSize: 8.w,
                           fontWeight: FontWeight.w600),
                     ),
                   ),
@@ -74,7 +75,10 @@ class _LastTenDetailsState extends State<LastTenDetails> {
                 ],
               ),
             ),
-            LineChartSample2(),
+            Expanded(
+              flex: 5,
+              child: LineChartSample2(),
+            ),
           ],
         ),
       );

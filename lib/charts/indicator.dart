@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Indicator extends StatelessWidget {
   final Color color;
@@ -21,20 +22,19 @@ class Indicator extends StatelessWidget {
     return Row(
       children: <Widget>[
         Container(
-          width: size,
-          height: size,
+          width: 16.w,
+          height: 16.w,
           decoration: BoxDecoration(
             shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
             color: color,
           ),
         ),
-        const SizedBox(
-          width: 4,
+        SizedBox(
+          width: 4.w,
         ),
         Text(
           text,
-          style: TextStyle(
-              fontSize: 16, fontWeight: FontWeight.bold, color: textColor),
+          style: TextStyle(fontSize: 16.w, color: textColor),
         )
       ],
     );

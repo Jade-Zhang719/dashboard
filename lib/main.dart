@@ -37,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     //Tablet : 1366 x 1024
+    //956.2 716.8
     //Mobile : 375 X 667
     //PC     : 1536 X 754.4
     double width = MediaQuery.of(context).size.width;
