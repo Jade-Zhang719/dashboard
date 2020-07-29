@@ -95,19 +95,24 @@ class _RatingTableState extends State<RatingTable> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    bool isMobile = height > width;
     return Container(
       width: 450.w,
       height: 250.w,
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.fromLTRB(0, 20.w, 20.w, 20.w),
+      margin: isMobile
+          ? EdgeInsets.all(0)
+          : EdgeInsets.fromLTRB(0, 20.w, 20.w, 20.w),
       child: Table(
         border: TableBorder.symmetric(inside: BorderSide(color: Colors.grey)),
         columnWidths: {
-          0: FixedColumnWidth(40.w),
-          1: FixedColumnWidth(100.w),
-          2: FixedColumnWidth(100.w),
-          3: FixedColumnWidth(100.w),
-          4: FixedColumnWidth(100.w),
+          0: FlexColumnWidth(1),
+          1: FlexColumnWidth(2),
+          2: FlexColumnWidth(2),
+          3: FlexColumnWidth(2),
+          4: FlexColumnWidth(2),
         },
         children: [
           TableRow(children: [

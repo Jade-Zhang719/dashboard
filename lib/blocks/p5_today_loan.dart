@@ -30,6 +30,9 @@ class _TodayLoanState extends State<TodayLoan> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    bool isMobile = height > width;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
@@ -43,7 +46,7 @@ class _TodayLoanState extends State<TodayLoan> {
         ],
         color: Colors.white,
       ),
-      margin: EdgeInsets.only(right: 20.w),
+      margin: isMobile ? EdgeInsets.all(1) : EdgeInsets.only(right: 20.w),
       child: Stack(
         children: [
           Container(

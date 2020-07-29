@@ -34,6 +34,9 @@ class RecordsBarChartState extends State<RecordsBarChart> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    bool isMobile = height > width;
     return Container(
       width: 840.w,
       height: 150.h,
@@ -44,7 +47,7 @@ class RecordsBarChartState extends State<RecordsBarChart> {
         ),
         color: Colors.white,
       ),
-      padding: EdgeInsets.fromLTRB(25.w, 20.w, 20.w, 10.w),
+      padding: EdgeInsets.fromLTRB(20.w, 20.w, 20.w, 5.w),
       child: BarChart(
         BarChartData(
           maxY: 20,
@@ -55,35 +58,35 @@ class RecordsBarChartState extends State<RecordsBarChart> {
               showTitles: true,
               textStyle: TextStyle(
                 color: Color(0xff7589a2),
-                fontSize: 14.w,
+                fontSize: isMobile ? 8.w : 14.w,
               ),
-              margin: 20.w,
+              margin: 10.w,
               getTitles: (double value) {
                 switch (value.toInt()) {
-                  case 0:
-                    return '2019-07';
+                  // case 0:
+                  //   return '2019-07';
                   case 1:
                     return '2019-08';
-                  case 2:
-                    return '2019-09';
-                  case 3:
-                    return '2019-10';
+                  // case 2:
+                  //   return '2019-09';
+                  // case 3:
+                  //   return '2019-10';
                   case 4:
                     return '2019-11';
-                  case 5:
-                    return '2019-12';
-                  case 6:
-                    return '2020-01';
+                  // case 5:
+                  //   return '2019-12';
+                  // case 6:
+                  //   return '2020-01';
                   case 7:
                     return '2020-02';
-                  case 8:
-                    return '2020-03';
-                  case 9:
-                    return '2020-04';
+                  // case 8:
+                  //   return '2020-03';
+                  // case 9:
+                  //   return '2020-04';
                   case 10:
                     return '2020-05';
-                  case 11:
-                    return '2020-06';
+                  // case 11:
+                  //   return '2020-06';
                   default:
                     return '';
                 }
@@ -95,7 +98,7 @@ class RecordsBarChartState extends State<RecordsBarChart> {
                 color: Color(0xff7589a2),
                 fontSize: 14.w,
               ),
-              margin: 24.w,
+              margin: 15.w,
               reservedSize: 14.w,
               getTitles: (value) {
                 if (value == 0) {
@@ -145,7 +148,7 @@ class RecordsBarChartState extends State<RecordsBarChart> {
         BarChartRodData(
           y: y,
           color: Colors.blue,
-          width: 30.w,
+          width: 20.w,
           borderRadius: BorderRadius.circular(2),
           backDrawRodData: BackgroundBarChartRodData(
             show: true,

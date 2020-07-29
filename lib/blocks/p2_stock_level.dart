@@ -46,23 +46,65 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
               ],
               color: Colors.white,
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
               children: [
-                Container(
-                  child: Text(
-                    "Total Stock On Hand",
-                    style: TextStyle(
-                      color: Colors.blueGrey,
-                      fontSize: 15.w,
-                      fontWeight: FontWeight.bold,
-                    ),
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        child: Text(
+                          "Total Stock On Hand",
+                          style: TextStyle(
+                            color: Colors.blueGrey,
+                            fontSize: 12.w,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      OptionButton(
+                        txSize: 10.w,
+                      ),
+                    ],
                   ),
                 ),
-                OptionButton(
-                  txSize: 10.w,
-                ),
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    width: 200.w,
+                    height: 200.w,
+                    padding: EdgeInsets.only(top: 20.w, right: 20.w),
+                    child: KdGaugeView(
+                      innerCirclePadding: 10.w,
+                      unitOfMeasurement: "Stock Level (%)",
+                      unitOfMeasurementTextStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 8.w),
+                      minMaxTextStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 5.w),
+                      speedTextStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.w),
+                      minSpeed: 0,
+                      maxSpeed: 100,
+                      speed: percentage,
+                      animate: true,
+                      alertSpeedArray: [40, 80, 100],
+                      alertColorArray: [
+                        Colors.orange,
+                        Colors.indigo,
+                        Colors.red
+                      ],
+                      duration: Duration(milliseconds: 3500),
+                    ),
+                  ),
+                )
               ],
             ),
           )
@@ -85,6 +127,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
             child: Row(
               children: [
                 Expanded(
+                  flex: 2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,10 +149,10 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                   ),
                 ),
                 Expanded(
-                  flex: 2,
+                  flex: 3,
                   child: Container(
-                    width: 400,
-                    height: 400,
+                    width: 400.w,
+                    height: 400.w,
                     padding: EdgeInsets.only(top: 10.w),
                     child: KdGaugeView(
                       innerCirclePadding: 10.w,
@@ -139,7 +182,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                       duration: Duration(milliseconds: 3500),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           );

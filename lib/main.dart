@@ -106,6 +106,34 @@ class _MyHomePageState extends State<MyHomePage> {
                       thickness: 1,
                       color: Colors.blueGrey,
                     ),
+                    Container(
+                      height: 360.h,
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(top: 10.w, bottom: 10.w),
+                      child: TodayLoan(),
+                    ),
+                    Divider(
+                      height: 1,
+                      thickness: 1,
+                      color: Colors.blueGrey,
+                    ),
+                    Container(
+                      height: 140.h,
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(top: 10.w, bottom: 10.w),
+                      child: RatingTable(),
+                    ),
+                    Divider(
+                      height: 1,
+                      thickness: 1,
+                      color: Colors.blueGrey,
+                    ),
+                    Container(
+                      height: 250.h,
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(top: 10.w),
+                      child: LastYearLaundry(),
+                    ),
                   ],
                 ),
               )
