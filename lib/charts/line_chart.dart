@@ -21,7 +21,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
       padding: EdgeInsets.all(20.w),
       child: LineChart(
         sampleData(),
-        swapAnimationDuration: Duration(milliseconds: 250),
+        swapAnimationDuration: Duration(milliseconds: 3500),
       ),
     );
   }

@@ -132,6 +132,7 @@ class RecordsBarChartState extends State<RecordsBarChart> {
           ),
           barGroups: barGroups,
         ),
+        swapAnimationDuration: Duration(milliseconds: 3500),
       ),
     );
   }
@@ -144,7 +145,7 @@ class RecordsBarChartState extends State<RecordsBarChart> {
         BarChartRodData(
           y: y,
           color: Colors.blue,
-          width: 40.w,
+          width: 30.w,
           borderRadius: BorderRadius.circular(2),
           backDrawRodData: BackgroundBarChartRodData(
             show: true,

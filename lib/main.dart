@@ -37,91 +37,124 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(
-      context,
-      width: 1536,
-      height: 754.4,
-      allowFontScaling: true,
-    );
+    //Tablet : 1366 x 1024
+    //Mobile : 375 X 667
+    //PC     : 1536 X 754.4
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    print(width);
+    print(height);
+
+    bool isMobile = height > width;
+    isMobile
+        ? ScreenUtil.init(
+            context,
+            width: 375,
+            height: 667,
+            allowFontScaling: true,
+          )
+        : ScreenUtil.init(
+            context,
+            width: 1536,
+            height: 754.4,
+            allowFontScaling: true,
+          );
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Dashboard"),
+        title: Text(
+          "Dashboard",
+        ),
       ),
       body: Center(
-        child: Stack(
-          children: [
-            Container(
-              color: Colors.indigo[50],
-              child: Flex(
-                direction: Axis.horizontal,
+        child: isMobile
+            ? Container(
+                color: Colors.indigo[50],
+                width: width,
+                height: height,
+                child: ListView(
+                  children: [
+                    Container(
+                      height: 265.h,
+                      width: width * 0.95,
+                      child: StockEach(),
+                    ),
+                  ],
+                ),
+              )
+            : Stack(
                 children: [
-                  Expanded(
-                    flex: 7,
+                  Container(
+                    color: Colors.indigo[50],
                     child: Flex(
-                      direction: Axis.vertical,
+                      direction: Axis.horizontal,
                       children: [
                         Expanded(
-                          flex: 5,
-                          child: StockEach(),
-                        ),
-                        Expanded(
-                          flex: 15,
+                          flex: 7,
                           child: Flex(
-                            direction: Axis.horizontal,
+                            direction: Axis.vertical,
                             children: [
                               Expanded(
                                 flex: 5,
-                                child: LastTenRecords(),
+                                child: StockEach(),
                               ),
                               Expanded(
-                                flex: 3,
-                                child: LastTenDetails(),
+                                flex: 15,
+                                child: Flex(
+                                  direction: Axis.horizontal,
+                                  children: [
+                                    Expanded(
+                                      flex: 5,
+                                      child: LastTenRecords(),
+                                    ),
+                                    Expanded(
+                                      flex: 3,
+                                      child: LastTenDetails(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                flex: 8,
+                                child: LastYearLaundry(),
                               ),
                             ],
                           ),
                         ),
                         Expanded(
-                          flex: 8,
-                          child: LastYearLaundry(),
+                          flex: 3,
+                          child: Flex(
+                            direction: Axis.vertical,
+                            children: [
+                              Expanded(
+                                flex: 2,
+                                child: RangeDataLabel(),
+                              ),
+                              Expanded(
+                                flex: 3,
+                                child: TodayLoan(),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: RatingTable(),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
-                  Expanded(
-                    flex: 3,
-                    child: Flex(
-                      direction: Axis.vertical,
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: RangeDataLabel(),
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: TodayLoan(),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: RatingTable(),
-                        ),
-                      ],
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      width: 250.w,
+                      height: 280.h,
+                      margin: EdgeInsets.only(right: 20.w),
+                      child: StockGaugeChart(),
                     ),
                   ),
                 ],
               ),
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                width: 250.w,
-                height: 280.h,
-                margin: EdgeInsets.only(right: 20.w),
-                child: StockGaugeChart(),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

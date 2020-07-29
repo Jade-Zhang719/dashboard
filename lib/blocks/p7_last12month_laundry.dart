@@ -42,6 +42,7 @@ class _LastYearLaundryState extends State<LastYearLaundry> {
                   style: TextStyle(
                     color: Colors.blueGrey,
                     fontSize: 15.w,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 OptionButton(

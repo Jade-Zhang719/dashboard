@@ -44,24 +44,25 @@ class _LoanPieChartState extends State<LoanPieChart> {
               aspectRatio: 1,
               child: PieChart(
                 PieChartData(
-                    pieTouchData:
-                        PieTouchData(touchCallback: (pieTouchResponse) {
-                      if (mounted)
-                        setState(() {
-                          if (pieTouchResponse.touchInput is FlLongPressEnd ||
-                              pieTouchResponse.touchInput is FlPanEnd) {
-                            touchedIndex = -1;
-                          } else {
-                            touchedIndex = pieTouchResponse.touchedSectionIndex;
-                          }
-                        });
-                    }),
-                    borderData: FlBorderData(
-                      show: false,
-                    ),
-                    sectionsSpace: 10.w,
-                    centerSpaceRadius: 80.w,
-                    sections: showingSections()),
+                  pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
+                    if (mounted)
+                      setState(() {
+                        if (pieTouchResponse.touchInput is FlLongPressEnd ||
+                            pieTouchResponse.touchInput is FlPanEnd) {
+                          touchedIndex = -1;
+                        } else {
+                          touchedIndex = pieTouchResponse.touchedSectionIndex;
+                        }
+                      });
+                  }),
+                  borderData: FlBorderData(
+                    show: false,
+                  ),
+                  sectionsSpace: 10.w,
+                  centerSpaceRadius: 80.w,
+                  sections: showingSections(),
+                ),
+                swapAnimationDuration: Duration(milliseconds: 3500),
               ),
             ),
           ),

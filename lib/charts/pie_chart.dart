@@ -42,6 +42,7 @@ class _StockPieChartState extends State<StockPieChart> {
           centerSpaceRadius: 20.w,
           sections: showingSections(value),
         ),
+        swapAnimationDuration: Duration(milliseconds: 3500),
       ),
     );
   }
