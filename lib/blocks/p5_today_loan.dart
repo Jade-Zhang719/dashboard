@@ -8,6 +8,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../charts/indicator.dart';
 
 class TodayLoan extends StatefulWidget {
+  final isDark;
+
+  const TodayLoan({Key key, this.isDark}) : super(key: key);
   @override
   State<StatefulWidget> createState() => _TodayLoanState();
 }
@@ -18,6 +21,7 @@ class _TodayLoanState extends State<TodayLoan> {
   int jackets;
   int accessories;
   int total;
+  bool isDark;
   @override
   void initState() {
     shirts = Random().nextInt(1000);
@@ -25,7 +29,14 @@ class _TodayLoanState extends State<TodayLoan> {
     jackets = Random().nextInt(1000);
     accessories = Random().nextInt(1000);
     total = shirts + pants + jackets + accessories;
+    isDark = widget.isDark;
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(TodayLoan oldWidget) {
+    isDark = widget.isDark;
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -121,6 +132,7 @@ class _TodayLoanState extends State<TodayLoan> {
               pants: pants,
               jackets: jackets,
               accessories: accessories,
+              isDark: isDark,
             ),
           ),
           Container(

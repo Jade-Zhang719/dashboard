@@ -235,7 +235,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           Expanded(
                             flex: 9,
-                            child: TodayLoan(),
+                            child: TodayLoan(
+                              isDark: isDark,
+                            ),
                           ),
                           Expanded(
                             flex: 5,

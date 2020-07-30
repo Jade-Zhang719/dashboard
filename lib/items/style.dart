@@ -71,10 +71,10 @@ class CustomMaterialStyle implements Style {
   Color get arcStrokeColor => ColorUtil.fromDartColor(Colors.transparent);
 
   @override
-  Color get legendEntryTextColor => MaterialPalette.gray.shade800;
+  Color get legendEntryTextColor => MaterialPalette.white;
 
   @override
-  Color get legendTitleTextColor => MaterialPalette.gray.shade800;
+  Color get legendTitleTextColor => MaterialPalette.white;
 
   @override
   Color get linePointHighlighterColor => MaterialPalette.gray.shade600;
