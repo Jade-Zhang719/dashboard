@@ -10,25 +10,47 @@ class RecordsBarChart extends StatefulWidget {
 }
 
 class RecordsBarChartState extends State<RecordsBarChart> {
-  List<BarChartGroupData> barGroups;
+  List<BarChartGroupData> barGroups = [];
 
   @override
   void initState() {
-    super.initState();
     barGroups = [
-      makeGroupData(0, Random().nextDouble() * 20),
-      makeGroupData(1, Random().nextDouble() * 20),
-      makeGroupData(2, Random().nextDouble() * 20),
-      makeGroupData(3, Random().nextDouble() * 20),
-      makeGroupData(4, Random().nextDouble() * 20),
-      makeGroupData(5, Random().nextDouble() * 20),
-      makeGroupData(6, Random().nextDouble() * 20),
-      makeGroupData(7, Random().nextDouble() * 20),
-      makeGroupData(8, Random().nextDouble() * 20),
-      makeGroupData(9, Random().nextDouble() * 20),
-      makeGroupData(10, Random().nextDouble() * 20),
-      makeGroupData(11, Random().nextDouble() * 20),
+      makeGroupData(0, 0),
+      makeGroupData(1, 0),
+      makeGroupData(2, 0),
+      makeGroupData(3, 0),
+      makeGroupData(4, 0),
+      makeGroupData(5, 0),
+      makeGroupData(6, 0),
+      makeGroupData(7, 0),
+      makeGroupData(8, 0),
+      makeGroupData(9, 0),
+      makeGroupData(10, 0),
+      makeGroupData(11, 0),
     ];
+
+    super.initState();
+    _changeBars();
+  }
+
+  Future<void> _changeBars() async {
+    await Future.delayed(new Duration(milliseconds: 500));
+    setState(() {
+      barGroups = [
+        makeGroupData(0, Random().nextDouble() * 20),
+        makeGroupData(1, Random().nextDouble() * 20),
+        makeGroupData(2, Random().nextDouble() * 20),
+        makeGroupData(3, Random().nextDouble() * 20),
+        makeGroupData(4, Random().nextDouble() * 20),
+        makeGroupData(5, Random().nextDouble() * 20),
+        makeGroupData(6, Random().nextDouble() * 20),
+        makeGroupData(7, Random().nextDouble() * 20),
+        makeGroupData(8, Random().nextDouble() * 20),
+        makeGroupData(9, Random().nextDouble() * 20),
+        makeGroupData(10, Random().nextDouble() * 20),
+        makeGroupData(11, Random().nextDouble() * 20),
+      ];
+    });
   }
 
   @override
