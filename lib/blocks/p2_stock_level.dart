@@ -126,11 +126,12 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                       Container(
                         child: Text(
                           "Total Stock On Hand",
-                          style: TextStyle(
-                            color: Colors.blueGrey,
-                            fontSize: 15.w,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context).textTheme.headline1,
+                          // TextStyle(
+                          //   color: Colors.blueGrey,
+                          //   fontSize: 15.w,
+                          //   fontWeight: FontWeight.bold,
+                          // ),
                         ),
                       ),
                       OptionButton(

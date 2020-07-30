@@ -41,13 +41,22 @@ class _MyAppState extends State<MyApp> {
         accentColor: isDark ? Color(0xff32315e) : Colors.blue[50],
         scaffoldBackgroundColor: isDark ? Color(0xff2f2d3b) : Colors.indigo[50],
         cardColor: isDark ? Color(0xff45415c) : Colors.white,
-        // textTheme: TextTheme(
-        //   headline1: TextStyle(
-        //     color: Colors.blueGrey,
-        //     fontSize: 15.w,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
+        textTheme: TextTheme(
+          headline1: TextStyle(
+            color: isDark ? Colors.blue : Colors.blueGrey,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+          headline2: TextStyle(
+            color: isDark ? Colors.blue : Colors.blueGrey,
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
+          bodyText1: TextStyle(
+            color: isDark ? Colors.blue : Colors.blueGrey,
+            fontSize: 10,
+          ),
+        ),
       ),
       home: MyHomePage(callback: (value) => onChanged(value)),
     );

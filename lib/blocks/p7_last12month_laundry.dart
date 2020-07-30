@@ -72,11 +72,7 @@ class _LastYearLaundryState extends State<LastYearLaundry> {
                     children: [
                       Text(
                         "Monthly Performance",
-                        style: TextStyle(
-                          color: Colors.blueGrey,
-                          fontSize: 15.w,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.headline2,
                       ),
                       OptionButton(
                         txSize: 10.w,
