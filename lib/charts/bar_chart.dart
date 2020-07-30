@@ -15,7 +15,6 @@ class RecordsBarChartState extends State<RecordsBarChart> {
   @override
   void initState() {
     super.initState();
-
     barGroups = [
       makeGroupData(0, Random().nextDouble() * 20),
       makeGroupData(1, Random().nextDouble() * 20),
@@ -45,7 +44,7 @@ class RecordsBarChartState extends State<RecordsBarChart> {
           bottomRight: Radius.circular(5),
           topRight: Radius.circular(5),
         ),
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
       ),
       padding: EdgeInsets.fromLTRB(20.w, 20.w, 20.w, 5.w),
       child: BarChart(
