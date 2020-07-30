@@ -158,7 +158,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 140.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 10.w, bottom: 10.w),
-                      child: RatingTable(),
+                      child: RatingTable(
+                        isDark: isDark,
+                      ),
                     ),
                     Divider(
                       height: 1,
@@ -232,8 +234,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: TodayLoan(),
                           ),
                           Expanded(
-                            flex: 6,
-                            child: RatingTable(),
+                            flex: 5,
+                            child: RatingTable(
+                              isDark: isDark,
+                            ),
                           ),
                         ],
                       ),
