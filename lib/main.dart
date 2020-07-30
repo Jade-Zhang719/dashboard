@@ -8,22 +8,36 @@ import 'blocks/p4_last10day_detail.dart';
 import 'blocks/p5_today_loan.dart';
 import 'blocks/p6_rating_table.dart';
 import 'blocks/p7_last12month_laundry.dart';
+import 'store/index.dart' show Store, ConfigModel;
+import 'store/models/config_state_model.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-
-// Register your license here
-
-  runApp(MyApp());
+  // WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    // Store.init(
+    // child:
+    MyApp(),
+    // ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    // return Store.connect<ConfigModel>(builder: (context, child, model) {
     return MaterialApp(
       title: "Dashboard",
+      // theme: ThemeData(
+      //   primaryColor: Color(model.theme),
+      // ),
       home: MyHomePage(),
     );
+    //   });
   }
 }
 
