@@ -17,16 +17,45 @@ class _LineChartSample2State extends State<LineChartSample2> {
     const Color(0xff23b6e6),
     const Color(0xff02d39a),
   ];
+  List<FlSpot> spots;
+
   bool isDark;
   @override
   void initState() {
     isDark = widget.isDark;
+
+    spots = [
+      FlSpot(1, 0),
+      FlSpot(2, 0),
+      FlSpot(3, 0),
+      FlSpot(5, 0),
+      FlSpot(7, 0),
+      FlSpot(8, 0),
+      FlSpot(10, 0),
+    ];
     super.initState();
+    _changeSpots();
+  }
+
+  Future<void> _changeSpots() async {
+    await Future.delayed(new Duration(milliseconds: 500));
+    setState(() {
+      spots = [
+        FlSpot(1, Random().nextDouble() * 5),
+        FlSpot(2, Random().nextDouble() * 5),
+        FlSpot(3, Random().nextDouble() * 5),
+        FlSpot(5, Random().nextDouble() * 5),
+        FlSpot(7, Random().nextDouble() * 5),
+        FlSpot(8, Random().nextDouble() * 5),
+        FlSpot(10, Random().nextDouble() * 5),
+      ];
+    });
   }
 
   @override
   void didUpdateWidget(LineChartSample2 oldWidget) {
     isDark = widget.isDark;
+
     super.didUpdateWidget(oldWidget);
   }
 
@@ -143,15 +172,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
       maxY: 6,
       lineBarsData: [
         LineChartBarData(
-          spots: [
-            FlSpot(1, Random().nextDouble() * 5),
-            FlSpot(2, Random().nextDouble() * 5),
-            FlSpot(3, Random().nextDouble() * 5),
-            FlSpot(5, Random().nextDouble() * 5),
-            FlSpot(7, Random().nextDouble() * 5),
-            FlSpot(8, Random().nextDouble() * 5),
-            FlSpot(10, Random().nextDouble() * 5),
-          ],
+          spots: spots,
           isCurved: false,
           colors: gradientColors,
           barWidth: 5,
@@ -262,15 +283,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
       maxY: 6,
       lineBarsData: [
         LineChartBarData(
-          spots: [
-            FlSpot(1, Random().nextDouble() * 5),
-            FlSpot(2, Random().nextDouble() * 5),
-            FlSpot(3, Random().nextDouble() * 5),
-            FlSpot(5, Random().nextDouble() * 5),
-            FlSpot(7, Random().nextDouble() * 5),
-            FlSpot(8, Random().nextDouble() * 5),
-            FlSpot(10, Random().nextDouble() * 5),
-          ],
+          spots: spots,
           isCurved: false,
           colors: gradientColors,
           barWidth: 5,
