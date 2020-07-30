@@ -12,10 +12,7 @@ import 'blocks/p7_last12month_laundry.dart';
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    // Store.init(
-    // child:
     MyApp(),
-    // ),
   );
 }
 
@@ -25,32 +22,38 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool isDark = false;
+  void onChanged(val) {
+    setState(() {
+      isDark = val;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // return Store.connect<ConfigModel>(builder: (context, child, model) {
     return MaterialApp(
       title: "Dashboard",
       theme: ThemeData(
-        primaryColor: const Color(0xff262545),
-        primaryColorDark: const Color(0xff201f39),
-        brightness: Brightness.dark,
+        primaryColor: isDark ? Color(0xff262545) : Colors.blue,
+        scaffoldBackgroundColor: isDark ? Color(0xff2f2d3b) : Colors.indigo[50],
+        cardColor: isDark ? Color(0xff45415c) : Colors.white,
       ),
-      // theme: ThemeData(
-      //   primaryColor: Color(model.theme),
-      // ),
-      home: MyHomePage(),
+      home: MyHomePage(callback: (value) => onChanged(value)),
     );
-    //   });
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  final callback;
+
+  const MyHomePage({Key key, this.callback}) : super(key: key);
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   bool isDark = false;
+
   @override
   Widget build(BuildContext context) {
     //Tablet : 1366 x 1024
@@ -84,26 +87,23 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         actions: [
           FlatButton(
-              onPressed: () {
-                setState(() {
-                  isDark = !isDark;
-                });
-              },
-              child: Icon(
-                Icons.refresh,
-                color: Colors.white,
-              ))
+            onPressed: () {
+              setState(() {
+                isDark = !isDark;
+                widget.callback(isDark);
+              });
+            },
+            child: Icon(
+              Icons.refresh,
+              color: Colors.white,
+            ),
+          )
         ],
-        backgroundColor:
-            (isDark) ? Theme.of(context).primaryColor : Colors.blue,
       ),
       body: Center(
         child: isMobile
             ? Container(
-                // color: Colors.indigo[50],
-                color: (isDark)
-                    ? Theme.of(context).primaryColorDark
-                    : Colors.indigo[50],
+                color: Theme.of(context).scaffoldBackgroundColor,
                 width: width,
                 height: height,
                 padding: EdgeInsets.all(5.w),
@@ -177,10 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )
             : Container(
-                // color: Colors.indigo[50],
-                color: (isDark)
-                    ? Theme.of(context).primaryColorDark
-                    : Colors.indigo[50],
+                color: Theme.of(context).scaffoldBackgroundColor,
                 child: Flex(
                   direction: Axis.horizontal,
                   children: [

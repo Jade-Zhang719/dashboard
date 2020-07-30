@@ -55,7 +55,7 @@ class _StockEachState extends State<StockEach> {
                     spreadRadius: 2.0,
                   )
                 ],
-                color: Colors.white,
+                color: Theme.of(context).cardColor,
               ),
               child: Column(
                 children: [
@@ -136,7 +136,7 @@ class _StockEachState extends State<StockEach> {
                     spreadRadius: 2.0,
                   )
                 ],
-                color: Colors.white,
+                color: Theme.of(context).cardColor,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

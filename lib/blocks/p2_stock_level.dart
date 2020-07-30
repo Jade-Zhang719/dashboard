@@ -113,7 +113,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                   spreadRadius: 2.0,
                 )
               ],
-              color: (isDark) ? Theme.of(context).primaryColor : Colors.white,
+              color: Theme.of(context).cardColor,
             ),
             child: Row(
               children: [

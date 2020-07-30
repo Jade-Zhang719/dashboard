@@ -17,7 +17,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
       width: 650.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
       ),
       padding: EdgeInsets.all(20.w),
       child: LineChart(
