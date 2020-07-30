@@ -27,18 +27,14 @@ class _LastYearLaundryState extends State<LastYearLaundry> {
                       topRight: Radius.circular(5),
                       topLeft: Radius.circular(5),
                     ),
-                    color: Colors.blue[50],
+                    color: Theme.of(context).accentColor,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
                         "Monthly Performance",
-                        style: TextStyle(
-                          color: Colors.blueGrey,
-                          fontSize: 15.w,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.headline2,
                       ),
                       OptionButton(
                         txSize: 10.w,

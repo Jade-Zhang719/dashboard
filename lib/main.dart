@@ -141,7 +141,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 200.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 5.w, bottom: 10.w),
-                      child: RangeDataLabel(),
+                      child: RangeDataLabel(
+                        isDark: isDark,
+                      ),
                     ),
                     Divider(
                       height: 1,
@@ -149,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.blueGrey,
                     ),
                     Container(
-                      height: 335.h,
+                      height: 340.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 5.w),
                       child: LastTenRecords(),
@@ -169,7 +171,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 360.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 10.w, bottom: 10.w),
-                      child: TodayLoan(),
+                      child: TodayLoan(
+                        isDark: isDark,
+                      ),
                     ),
                     Divider(
                       height: 1,
@@ -190,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.blueGrey,
                     ),
                     Container(
-                      height: 250.h,
+                      height: 270.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 10.w),
                       child: LastYearLaundry(),

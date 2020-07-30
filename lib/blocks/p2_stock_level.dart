@@ -51,14 +51,14 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
             padding: EdgeInsets.only(left: 20.w),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey,
-                  offset: Offset(2.0, 2.0),
-                  blurRadius: 5.0,
-                  spreadRadius: 2.0,
-                )
-              ],
+              // boxShadow: [
+              //   BoxShadow(
+              //     color: Colors.grey,
+              //     offset: Offset(2.0, 2.0),
+              //     blurRadius: 5.0,
+              //     spreadRadius: 2.0,
+              //   )
+              // ],
               color: (isDark) ? Theme.of(context).primaryColor : Colors.white,
             ),
             child: Row(
@@ -72,11 +72,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                       Container(
                         child: Text(
                           "Total Stock On Hand",
-                          style: TextStyle(
-                            color: Colors.blueGrey,
-                            fontSize: 12.w,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context).textTheme.headline1,
                         ),
                       ),
                       OptionButton(
@@ -93,6 +89,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                     padding: EdgeInsets.only(top: 20.w, right: 20.w),
                     child: new GaugeForStockLevel(
                       percentage: percentage,
+                      isDark: isDark,
                     ),
                   ),
                 )

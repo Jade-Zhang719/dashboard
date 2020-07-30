@@ -41,20 +41,13 @@ class _LastTenRecordsState extends State<LastTenRecords> {
                         Container(
                           child: Text(
                             "Last 10 Days Records ",
-                            style: TextStyle(
-                              color: Colors.blueGrey,
-                              fontSize: 20.w,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: Theme.of(context).textTheme.headline1,
                           ),
                         ),
                         Container(
                           child: Text(
                             "Loan: $loanQty  Return: $returnQty",
-                            style: TextStyle(
-                              color: Colors.blueGrey,
-                              fontSize: 15.w,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ),
                       ],
