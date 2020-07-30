@@ -40,24 +40,6 @@ class _StockPieChartState extends State<StockPieChart> {
             id: 'Stock',
             domainFn: (LinearSales sales, _) => sales.index,
             measureFn: (LinearSales sales, _) => sales.stock,
-            patternColorFn: (LinearSales segment, _) {
-              switch (segment.index) {
-                case 0:
-                  {
-                    return charts.ColorUtil.fromDartColor(Color(0xff13d38e));
-                  }
-
-                case 1:
-                  {
-                    return charts.ColorUtil.fromDartColor(Color(0xff13d38e));
-                  }
-
-                default:
-                  {
-                    return charts.ColorUtil.fromDartColor(Color(0xff13d38e));
-                  }
-              }
-            },
             data: data,
             // labelAccessorFn: (LinearSales row, _) => '${row.stock}',
             colorFn: (LinearSales segment, _) {
