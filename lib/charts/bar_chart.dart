@@ -57,6 +57,7 @@ class RecordsBarChartState extends State<RecordsBarChart> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
     bool isMobile = height > width;
     return Container(
       width: 840.w,
@@ -143,13 +144,13 @@ class RecordsBarChartState extends State<RecordsBarChart> {
             checkToShowHorizontalLine: (value) => value % 3 == 0,
             getDrawingHorizontalLine: (value) {
               return FlLine(
-                color: Colors.grey[200],
+                color: Colors.grey[400],
                 strokeWidth: 1,
               );
             },
             getDrawingVerticalLine: (value) {
               return FlLine(
-                color: Colors.grey[200],
+                color: Colors.grey[400],
                 strokeWidth: 1,
               );
             },
@@ -174,7 +175,9 @@ class RecordsBarChartState extends State<RecordsBarChart> {
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
             y: 20,
-            color: Colors.grey[200],
+            color:
+                // Theme.of(context).scaffoldBackgroundColor,
+                Colors.grey[200],
           ),
         ),
       ],

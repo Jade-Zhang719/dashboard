@@ -44,7 +44,7 @@ class _TodayLoanState extends State<TodayLoan> {
             spreadRadius: 2.0,
           )
         ],
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
       ),
       margin: isMobile ? EdgeInsets.all(1) : EdgeInsets.only(right: 20.w),
       child: Stack(

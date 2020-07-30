@@ -22,7 +22,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool isDark = false;
+  bool isDark = true;
   void onChanged(val) {
     setState(() {
       isDark = val;
@@ -35,6 +35,7 @@ class _MyAppState extends State<MyApp> {
       title: "Dashboard",
       theme: ThemeData(
         primaryColor: isDark ? Color(0xff262545) : Colors.blue,
+        accentColor: isDark ? Color(0xff32315e) : Colors.blue[50],
         scaffoldBackgroundColor: isDark ? Color(0xff2f2d3b) : Colors.indigo[50],
         cardColor: isDark ? Color(0xff45415c) : Colors.white,
       ),
@@ -52,7 +53,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isDark = false;
+  bool isDark = true;
 
   @override
   Widget build(BuildContext context) {
@@ -134,9 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 360.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 5.w, bottom: 10.w),
-                      child: LastTenDetails(
-                        isDark: isDark,
-                      ),
+                      child: LastTenDetails(),
                     ),
                     Divider(
                       height: 1,
@@ -201,9 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 Expanded(
                                   flex: 3,
-                                  child: LastTenDetails(
-                                    isDark: isDark,
-                                  ),
+                                  child: LastTenDetails(),
                                 ),
                               ],
                             ),

@@ -6,9 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../charts/line_chart2.dart';
 
 class LastTenDetails extends StatefulWidget {
-  final isDark;
-
-  const LastTenDetails({Key key, this.isDark}) : super(key: key);
   @override
   _LastTenDetailsState createState() => _LastTenDetailsState();
 }
@@ -19,7 +16,7 @@ class _LastTenDetailsState extends State<LastTenDetails> {
   int jackets;
   int accessories;
   int total;
-  bool isDark;
+
   @override
   void initState() {
     shirts = Random().nextInt(1000);
@@ -27,14 +24,8 @@ class _LastTenDetailsState extends State<LastTenDetails> {
     jackets = Random().nextInt(1000);
     accessories = Random().nextInt(1000);
     total = shirts + pants + jackets + accessories;
-    isDark = widget.isDark;
-    super.initState();
-  }
 
-  @override
-  void didUpdateWidget(LastTenDetails oldWidget) {
-    isDark = widget.isDark;
-    super.didUpdateWidget(oldWidget);
+    super.initState();
   }
 
   @override
@@ -45,7 +36,7 @@ class _LastTenDetailsState extends State<LastTenDetails> {
         height: 85.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
         ),
         padding: EdgeInsets.all(10.w),
         child: Row(
@@ -88,9 +79,7 @@ class _LastTenDetailsState extends State<LastTenDetails> {
             ),
             Expanded(
               flex: 5,
-              child: LineChartSample2(
-                isDark: isDark,
-              ),
+              child: LineChartSample2(),
             ),
           ],
         ),

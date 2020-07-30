@@ -65,7 +65,7 @@ class _LastYearLaundryState extends State<LastYearLaundry> {
                       bottomLeft: Radius.circular(5),
                       topLeft: Radius.circular(5),
                     ),
-                    color: Colors.blue[50],
+                    color: Theme.of(context).accentColor,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
