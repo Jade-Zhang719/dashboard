@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RatingTable extends StatefulWidget {
+  final isDark;
+
+  const RatingTable({Key key, this.isDark}) : super(key: key);
   @override
   _RatingTableState createState() => _RatingTableState();
 }
@@ -14,6 +17,7 @@ class _RatingTableState extends State<RatingTable> {
   int jackets;
   int accessories;
   int total;
+  bool isDark;
   @override
   void initState() {
     shirts = Random().nextInt(1000);
@@ -21,26 +25,41 @@ class _RatingTableState extends State<RatingTable> {
     jackets = Random().nextInt(1000);
     accessories = Random().nextInt(1000);
     total = shirts + pants + jackets + accessories;
+    isDark = widget.isDark;
     super.initState();
   }
 
-  TableRow _tableRowBuilder(
-    String index,
-    String id,
-    String qty,
-    String date,
-    String time,
-    int type,
-  ) {
+  @override
+  void didUpdateWidget(RatingTable oldWidget) {
+    setState(() {
+      isDark = widget.isDark;
+    });
+
+    super.didUpdateWidget(oldWidget);
+  }
+
+  TableRow _tableRowBuilder(String index, String id, String qty, String date,
+      String time, int type, bool isDark) {
     Color bgColor;
     Color txColor;
-    if (type == 1) {
-      bgColor = Colors.white;
-      txColor = Colors.black;
+    if (isDark) {
+      if (type == 1) {
+        bgColor = Theme.of(context).primaryColor;
+        txColor = Colors.white;
+      } else {
+        bgColor = Colors.indigo[900];
+        txColor = Colors.white;
+      }
     } else {
-      bgColor = Colors.blueAccent;
-      txColor = Colors.white;
+      if (type == 1) {
+        bgColor = Colors.white;
+        txColor = Colors.black;
+      } else {
+        bgColor = Colors.blueAccent;
+        txColor = Colors.white;
+      }
     }
+
     return TableRow(
       decoration: BoxDecoration(color: bgColor),
       children: [
@@ -100,115 +119,107 @@ class _RatingTableState extends State<RatingTable> {
     bool isMobile = height > width;
     return Container(
       width: 450.w,
-      height: 250.w,
+      height: 230.w,
       alignment: Alignment.centerLeft,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            offset: Offset(2.0, 2.0),
+            blurRadius: 5.0,
+            spreadRadius: 2.0,
+          )
+        ],
+        color: (isDark) ? Theme.of(context).primaryColor : Colors.white,
+      ),
       margin: isMobile
           ? EdgeInsets.all(0)
-          : EdgeInsets.fromLTRB(0, 20.w, 20.w, 20.w),
+          : EdgeInsets.fromLTRB(0, 20.w, 20.w, 40.w),
       child: Table(
         border: TableBorder.symmetric(inside: BorderSide(color: Colors.grey)),
         columnWidths: {
           0: FlexColumnWidth(1),
-          1: FlexColumnWidth(2),
+          1: FlexColumnWidth(3),
           2: FlexColumnWidth(2),
           3: FlexColumnWidth(2),
           4: FlexColumnWidth(2),
         },
         children: [
-          TableRow(children: [
-            Center(
-              child: Container(
-                padding: EdgeInsets.all(8.w),
-                child: Text(
-                  "#",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 10.w,
-                      fontWeight: FontWeight.bold),
+          TableRow(
+              decoration: BoxDecoration(
+                  color:
+                      (isDark) ? Theme.of(context).primaryColor : Colors.white),
+              children: [
+                Center(
+                  child: Container(
+                    padding: EdgeInsets.all(8.w),
+                    child: Text(
+                      "#",
+                      style: TextStyle(
+                          color: (isDark) ? Colors.white : Colors.black,
+                          fontSize: 10.w,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Center(
-              child: Container(
-                padding: EdgeInsets.all(8.w),
-                child: Text(
-                  "Uniform ID".toUpperCase(),
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 10.w,
-                      fontWeight: FontWeight.bold),
+                Center(
+                  child: Container(
+                    padding: EdgeInsets.all(8.w),
+                    child: Text(
+                      "Uniform ID".toUpperCase(),
+                      style: TextStyle(
+                          color: (isDark) ? Colors.white : Colors.black,
+                          fontSize: 10.w,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Center(
-              child: Container(
-                padding: EdgeInsets.all(8.w),
-                child: Text(
-                  "Qty".toUpperCase(),
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 10.w,
-                      fontWeight: FontWeight.bold),
+                Center(
+                  child: Container(
+                    padding: EdgeInsets.all(8.w),
+                    child: Text(
+                      "Qty".toUpperCase(),
+                      style: TextStyle(
+                          color: (isDark) ? Colors.white : Colors.black,
+                          fontSize: 10.w,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Center(
-              child: Container(
-                padding: EdgeInsets.all(8.w),
-                child: Text(
-                  "Date".toUpperCase(),
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 10.w,
-                      fontWeight: FontWeight.bold),
+                Center(
+                  child: Container(
+                    padding: EdgeInsets.all(8.w),
+                    child: Text(
+                      "Date".toUpperCase(),
+                      style: TextStyle(
+                          color: (isDark) ? Colors.white : Colors.black,
+                          fontSize: 10.w,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Center(
-              child: Container(
-                padding: EdgeInsets.all(8.w),
-                child: Text(
-                  "Time".toUpperCase(),
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 10.w,
-                      fontWeight: FontWeight.bold),
+                Center(
+                  child: Container(
+                    padding: EdgeInsets.all(8.w),
+                    child: Text(
+                      "Time".toUpperCase(),
+                      style: TextStyle(
+                          color: (isDark) ? Colors.white : Colors.black,
+                          fontSize: 10.w,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ]),
+              ]),
           _tableRowBuilder(
-            "1",
-            "100000086",
-            "$shirts",
-            "2020/3/3",
-            "10:30",
-            2,
-          ),
+              "1", "100000086", "$shirts", "2020/3/3", "10:30", 2, isDark),
           _tableRowBuilder(
-            "2",
-            "100000086",
-            "$pants",
-            "2020/3/3",
-            "10:30",
-            1,
-          ),
+              "2", "100000086", "$pants", "2020/3/3", "10:30", 1, isDark),
           _tableRowBuilder(
-            "3",
-            "100000086",
-            "$jackets",
-            "2020/3/3",
-            "10:30",
-            2,
-          ),
+              "3", "100000086", "$jackets", "2020/3/3", "10:30", 2, isDark),
           _tableRowBuilder(
-            "4",
-            "100000086",
-            "$pants",
-            "2020/3/3",
-            "10:30",
-            1,
-          ),
+              "4", "100000086", "$pants", "2020/3/3", "10:30", 1, isDark),
         ],
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       ),

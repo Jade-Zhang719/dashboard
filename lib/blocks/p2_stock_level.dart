@@ -20,6 +20,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
   int stockOnHand;
   double percentage;
   bool isDark;
+
   @override
   void initState() {
     totalStock = Random().nextInt(1000);
@@ -31,7 +32,10 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
 
   @override
   void didUpdateWidget(RangeDataLabel oldWidget) {
-    isDark = widget.isDark;
+    setState(() {
+      isDark = widget.isDark;
+    });
+
     super.didUpdateWidget(oldWidget);
   }
 
@@ -40,6 +44,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     bool isMobile = height > width;
+
     return isMobile
         ? Container(
             constraints: BoxConstraints.expand(),
@@ -54,7 +59,7 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                   spreadRadius: 2.0,
                 )
               ],
-              color: Colors.white,
+              color: (isDark) ? Theme.of(context).primaryColor : Colors.white,
             ),
             child: Row(
               children: [
@@ -140,8 +145,9 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                     width: 400.w,
                     height: 400.w,
                     padding: EdgeInsets.only(top: 20.w, right: 20.w),
-                    child: new GaugeForStockLevel(
+                    child: GaugeForStockLevel(
                       percentage: percentage,
+                      isDark: isDark,
                     ),
                   ),
                 ),
