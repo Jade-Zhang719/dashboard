@@ -45,7 +45,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
   }
 
   Future<void> _changeSpots() async {
-    await Future.delayed(new Duration(milliseconds: 500));
+    await Future.delayed(new Duration(milliseconds: 1));
     setState(() {
       duration = Duration(seconds: 1);
       spots1 = [
