@@ -14,7 +14,6 @@ class RecordsBarChartState extends State<RecordsBarChart> {
 
   @override
   void initState() {
-    super.initState();
     barGroups = [
       makeGroupData(0, 0),
       makeGroupData(1, 0),
@@ -30,7 +29,13 @@ class RecordsBarChartState extends State<RecordsBarChart> {
       makeGroupData(11, 0),
     ];
 
-    Future.delayed(Duration(milliseconds: 500), () {
+    super.initState();
+    _changeBars();
+  }
+
+  Future<void> _changeBars() async {
+    await Future.delayed(new Duration(milliseconds: 500));
+    setState(() {
       barGroups = [
         makeGroupData(0, Random().nextDouble() * 20),
         makeGroupData(1, Random().nextDouble() * 20),
