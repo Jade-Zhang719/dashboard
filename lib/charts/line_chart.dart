@@ -10,10 +10,12 @@ class RecordsLineChart extends StatefulWidget {
 }
 
 class _RecordsLineChartState extends State<RecordsLineChart> {
+  Duration duration;
   List<FlSpot> spots1;
   List<FlSpot> spots2;
   @override
   void initState() {
+    duration = Duration(seconds: 1);
     spots1 = [
       FlSpot(1, 0),
       FlSpot(2, 0),
@@ -43,8 +45,9 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
   }
 
   Future<void> _changeSpots() async {
-    await Future.delayed(new Duration(milliseconds: 500));
+    await Future.delayed(new Duration(milliseconds: 1));
     setState(() {
+      duration = Duration(seconds: 1);
       spots1 = [
         FlSpot(1, Random().nextDouble() * 50),
         FlSpot(2, Random().nextDouble() * 50),
@@ -73,6 +76,37 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
   }
 
   @override
+  void didUpdateWidget(RecordsLineChart oldWidget) {
+    duration = Duration(seconds: 0);
+    spots1 = [
+      FlSpot(1, 0),
+      FlSpot(2, 0),
+      FlSpot(3, 0),
+      FlSpot(4, 0),
+      FlSpot(5, 0),
+      FlSpot(6, 0),
+      FlSpot(7, 0),
+      FlSpot(8, 0),
+      FlSpot(9, 0),
+      FlSpot(10, 0),
+    ];
+    spots2 = [
+      FlSpot(1, 0),
+      FlSpot(2, 0),
+      FlSpot(3, 0),
+      FlSpot(4, 0),
+      FlSpot(5, 0),
+      FlSpot(6, 0),
+      FlSpot(7, 0),
+      FlSpot(8, 0),
+      FlSpot(9, 0),
+      FlSpot(10, 0),
+    ];
+    _changeSpots();
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: 240.h,
@@ -84,7 +118,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
       padding: EdgeInsets.all(20.w),
       child: LineChart(
         sampleData(),
-        swapAnimationDuration: Duration(seconds: 1),
+        swapAnimationDuration: duration,
       ),
     );
   }

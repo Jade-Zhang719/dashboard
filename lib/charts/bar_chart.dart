@@ -11,9 +11,10 @@ class RecordsBarChart extends StatefulWidget {
 
 class RecordsBarChartState extends State<RecordsBarChart> {
   List<BarChartGroupData> barGroups = [];
-
+  Duration duration;
   @override
   void initState() {
+    duration = Duration(seconds: 1);
     barGroups = [
       makeGroupData(0, 0),
       makeGroupData(1, 0),
@@ -34,8 +35,9 @@ class RecordsBarChartState extends State<RecordsBarChart> {
   }
 
   Future<void> _changeBars() async {
-    await Future.delayed(new Duration(milliseconds: 500));
+    await Future.delayed(new Duration(milliseconds: 1));
     setState(() {
+      duration = Duration(seconds: 1);
       barGroups = [
         makeGroupData(0, Random().nextDouble() * 20),
         makeGroupData(1, Random().nextDouble() * 20),
@@ -51,6 +53,28 @@ class RecordsBarChartState extends State<RecordsBarChart> {
         makeGroupData(11, Random().nextDouble() * 20),
       ];
     });
+  }
+
+  @override
+  void didUpdateWidget(RecordsBarChart oldWidget) {
+    duration = Duration(seconds: 0);
+    barGroups = [
+      makeGroupData(0, 0),
+      makeGroupData(1, 0),
+      makeGroupData(2, 0),
+      makeGroupData(3, 0),
+      makeGroupData(4, 0),
+      makeGroupData(5, 0),
+      makeGroupData(6, 0),
+      makeGroupData(7, 0),
+      makeGroupData(8, 0),
+      makeGroupData(9, 0),
+      makeGroupData(10, 0),
+      makeGroupData(11, 0),
+    ];
+
+    _changeBars();
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -157,7 +181,7 @@ class RecordsBarChartState extends State<RecordsBarChart> {
           ),
           barGroups: barGroups,
         ),
-        swapAnimationDuration: Duration(seconds: 1),
+        swapAnimationDuration: duration,
       ),
     );
   }

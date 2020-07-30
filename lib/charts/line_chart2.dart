@@ -15,9 +15,10 @@ class _LineChartSample2State extends State<LineChartSample2> {
     const Color(0xff02d39a),
   ];
   List<FlSpot> spots;
-
+  Duration duration;
   @override
   void initState() {
+    duration = Duration(seconds: 1);
     spots = [
       FlSpot(1, 0),
       FlSpot(2, 0),
@@ -32,8 +33,9 @@ class _LineChartSample2State extends State<LineChartSample2> {
   }
 
   Future<void> _changeSpots() async {
-    await Future.delayed(new Duration(milliseconds: 100));
+    await Future.delayed(new Duration(milliseconds: 1));
     setState(() {
+      duration = Duration(seconds: 1);
       spots = [
         FlSpot(1, Random().nextDouble() * 5),
         FlSpot(2, Random().nextDouble() * 5),
@@ -44,6 +46,22 @@ class _LineChartSample2State extends State<LineChartSample2> {
         FlSpot(10, Random().nextDouble() * 5),
       ];
     });
+  }
+
+  @override
+  void didUpdateWidget(LineChartSample2 oldWidget) {
+    duration = Duration(seconds: 0);
+    spots = [
+      FlSpot(1, 0),
+      FlSpot(2, 0),
+      FlSpot(3, 0),
+      FlSpot(5, 0),
+      FlSpot(7, 0),
+      FlSpot(8, 0),
+      FlSpot(10, 0),
+    ];
+    _changeSpots();
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -61,7 +79,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
       padding: EdgeInsets.fromLTRB(10.w, 10.w, 10.w, 0),
       child: LineChart(
         mainDataLight(),
-        swapAnimationDuration: Duration(seconds: 1),
+        swapAnimationDuration: duration,
       ),
     );
   }
