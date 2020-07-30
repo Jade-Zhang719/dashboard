@@ -1,3 +1,4 @@
+import 'package:charts_common/common.dart' as common;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,9 +9,11 @@ import 'blocks/p4_last10day_detail.dart';
 import 'blocks/p5_today_loan.dart';
 import 'blocks/p6_rating_table.dart';
 import 'blocks/p7_last12month_laundry.dart';
+import 'items/style.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
+  common.StyleFactory.style = CustomMaterialStyle();
   runApp(
     MyApp(),
   );

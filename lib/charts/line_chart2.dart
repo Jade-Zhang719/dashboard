@@ -32,7 +32,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
   }
 
   Future<void> _changeSpots() async {
-    await Future.delayed(new Duration(milliseconds: 500));
+    await Future.delayed(new Duration(milliseconds: 100));
     setState(() {
       spots = [
         FlSpot(1, Random().nextDouble() * 5),
