@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../items/clothIcon.dart';
-import '../charts/pie_chart.dart';
+import '../charts/pie_chart1.dart';
 import '../items/optionButton.dart';
 
 class StockEach extends StatefulWidget {
@@ -159,7 +159,11 @@ class _StockEachState extends State<StockEach> {
                   ),
                   Stack(
                     children: [
-                      StockPieChart(value: stockPercent),
+                      Container(
+                        width: 60.w,
+                        height: 60.w,
+                        child: StockPieChart(value: stockPercent),
+                      ),
                       Container(
                         width: 60.w,
                         height: 60.w,
