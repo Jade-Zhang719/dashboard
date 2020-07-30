@@ -56,6 +56,10 @@ class _MyAppState extends State<MyApp> {
             color: isDark ? Colors.blue : Colors.blueGrey,
             fontSize: 10,
           ),
+          bodyText2: TextStyle(
+            color: isDark ? Colors.white : Colors.blueGrey,
+            fontSize: 10,
+          ),
         ),
       ),
       home: MyHomePage(callback: (value) => onChanged(value)),

@@ -140,7 +140,7 @@ class _LastTenRecordsState extends State<LastTenRecords> {
                       margin: EdgeInsets.only(left: 20.w),
                       child: Text(
                         "Loan: $loanQty  Return: $returnQty",
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
                     Container(

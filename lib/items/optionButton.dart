@@ -42,12 +42,9 @@ class _OptionButtonState extends State<OptionButton> {
             height: txSize * 4,
             child: DropdownButton<String>(
               iconSize: txSize * 2,
-              dropdownColor: Colors.white,
+              dropdownColor: Theme.of(context).cardColor,
               value: dropdownValue1,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: txSize,
-              ),
+              style: Theme.of(context).textTheme.bodyText2,
               onChanged: (String newValue) {
                 setState(() {
                   dropdownValue1 = newValue;
@@ -61,10 +58,7 @@ class _OptionButtonState extends State<OptionButton> {
                   child: Container(
                     child: Text(
                       value,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: txSize,
-                      ),
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                   ),
                 );
@@ -75,12 +69,9 @@ class _OptionButtonState extends State<OptionButton> {
             height: txSize * 4,
             child: DropdownButton<String>(
               iconSize: txSize * 2,
-              dropdownColor: Colors.white,
+              dropdownColor: Theme.of(context).cardColor,
               value: dropdownValue2,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: txSize,
-              ),
+              style: Theme.of(context).textTheme.bodyText2,
               onChanged: (String newValue) {
                 setState(() {
                   dropdownValue2 = newValue;
@@ -94,10 +85,7 @@ class _OptionButtonState extends State<OptionButton> {
                   child: Container(
                     child: Text(
                       value,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: txSize,
-                      ),
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                   ),
                 );

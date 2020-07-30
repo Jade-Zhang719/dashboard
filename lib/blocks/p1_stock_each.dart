@@ -88,10 +88,7 @@ class _StockEachState extends State<StockEach> {
                               alignment: Alignment.center,
                               child: Text(
                                 "${stockPercent.toString()}%",
-                                style: TextStyle(
-                                  color: Colors.blueGrey,
-                                  fontSize: 10.w,
-                                ),
+                                style: Theme.of(context).textTheme.bodyText2,
                               ),
                             ),
                           ],
@@ -170,10 +167,7 @@ class _StockEachState extends State<StockEach> {
                         child: Center(
                           child: Text(
                             "${stockPercent.toString()}%",
-                            style: TextStyle(
-                              color: Colors.blueGrey,
-                              fontSize: 10.w,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText2,
                           ),
                         ),
                       ),
@@ -188,10 +182,7 @@ class _StockEachState extends State<StockEach> {
                             Text(
                               "Stock of\n$variety",
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontSize: 8.w,
-                              ),
+                              style: Theme.of(context).textTheme.bodyText1,
                             ),
                             OptionButton(txSize: 5.w),
                           ],
