@@ -9,8 +9,14 @@ class DonutPieChart extends StatelessWidget {
   final int pants;
   final int jackets;
   final int accessories;
+  final isDark;
   DonutPieChart(
-      {this.animate, this.shirts, this.pants, this.jackets, this.accessories});
+      {this.animate,
+      this.shirts,
+      this.pants,
+      this.jackets,
+      this.accessories,
+      this.isDark});
 
   @override
   Widget build(BuildContext context) {
@@ -60,15 +66,26 @@ class DonutPieChart extends StatelessWidget {
       ];
     }
 
-    return new charts.PieChart(_createSampleData(),
-        animate: animate,
-        animationDuration: Duration(milliseconds: 1500),
-
-        // Configure the width of the pie slices to 60px. The remaining space in
-        // the chart will be left as a hole in the center.
-        defaultRenderer: new charts.ArcRendererConfig(
-            arcWidth: 60.w.toInt(),
-            arcRendererDecorators: [new charts.ArcLabelDecorator()]));
+    return new charts.PieChart(
+      _createSampleData(),
+      animate: animate,
+      animationDuration: Duration(milliseconds: 1500),
+      defaultRenderer: new charts.ArcRendererConfig(
+        arcWidth: 60.w.toInt(),
+        arcRendererDecorators: [
+          new charts.ArcLabelDecorator(
+            insideLabelStyleSpec: new charts.TextStyleSpec(
+              color: charts.Color.white,
+              fontSize: 12.w.toInt(),
+            ),
+            outsideLabelStyleSpec: new charts.TextStyleSpec(
+              color: (isDark) ? charts.Color.white : charts.Color.black,
+              fontSize: 12.w.toInt(),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   /// Create one series with sample hard coded data.
