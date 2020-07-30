@@ -29,21 +29,15 @@ class _StockPieChartState extends State<StockPieChart> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 60.w,
-      height: 60.w,
-      child: PieChart(
-        PieChartData(
-          borderData: FlBorderData(
-            show: false,
-          ),
-          sectionsSpace: 0,
-          startDegreeOffset: -90,
-          centerSpaceRadius: 20.w,
-          sections: showingSections(value),
+    return PieChart(
+      PieChartData(
+        borderData: FlBorderData(
+          show: false,
         ),
-        swapAnimationDuration: Duration(seconds: 1),
+        startDegreeOffset: -90,
+        sections: showingSections(value),
       ),
+      swapAnimationDuration: Duration(seconds: 1),
     );
   }
 
