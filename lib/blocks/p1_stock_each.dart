@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../items/clothIcon.dart';
 import '../charts/pie_chart1.dart';
+import '../items/clothIcon.dart';
 import '../items/optionButton.dart';
 
 class StockEach extends StatefulWidget {
@@ -138,65 +138,66 @@ class _StockEachState extends State<StockEach> {
                 ],
                 color: Theme.of(context).cardColor,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Stack(
                 children: [
                   Container(
-                    width: 75.w,
-                    height: 85.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(5),
-                        topLeft: Radius.circular(5),
-                      ),
-                      color: Colors.blue[50],
-                    ),
-                    child: Icon(
-                      cloth,
-                      color: Colors.blue,
-                      size: 50.w,
-                    ),
+                    margin: EdgeInsets.fromLTRB(15.w, 0, 30.w, 0),
+                    child: StockPieChart(value: stockPercent),
                   ),
-                  Stack(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        width: 60.w,
-                        height: 60.w,
-                        child: StockPieChart(value: stockPercent),
+                        width: 75.w,
+                        height: 85.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(5),
+                            topLeft: Radius.circular(5),
+                          ),
+                          color: Colors.blue[50],
+                        ),
+                        child: Icon(
+                          cloth,
+                          color: Colors.blue,
+                          size: 50.w,
+                        ),
                       ),
                       Container(
                         width: 60.w,
                         height: 60.w,
-                        alignment: Alignment.center,
-                        child: Text(
-                          "${stockPercent.toString()}%",
-                          style: TextStyle(
-                            color: Colors.blueGrey,
-                            fontSize: 10.w,
+                        padding: EdgeInsets.only(left: 8.w),
+                        child: Center(
+                          child: Text(
+                            "${stockPercent.toString()}%",
+                            style: TextStyle(
+                              color: Colors.blueGrey,
+                              fontSize: 10.w,
+                            ),
                           ),
+                        ),
+                      ),
+                      Container(
+                        width: 90.w,
+                        height: 70.h,
+                        margin: EdgeInsets.only(right: 10.w),
+                        alignment: Alignment.center,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              "Stock of\n$variety",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 8.w,
+                              ),
+                            ),
+                            OptionButton(txSize: 5.w),
+                          ],
                         ),
                       ),
                     ],
-                  ),
-                  Container(
-                    width: 90.w,
-                    height: 70.h,
-                    margin: EdgeInsets.only(right: 10.w),
-                    alignment: Alignment.center,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "Stock of\n$variety",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontSize: 8.w,
-                          ),
-                        ),
-                        OptionButton(txSize: 5.w),
-                      ],
-                    ),
                   ),
                 ],
               ),

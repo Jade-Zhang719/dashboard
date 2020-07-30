@@ -68,7 +68,7 @@ class _StockPieChartState extends State<StockPieChart> {
       animate: true,
       animationDuration: Duration(milliseconds: 1500),
       defaultRenderer: new charts.ArcRendererConfig(
-        arcWidth: 20.w.toInt(),
+        arcWidth: 10.w.toInt(),
       ),
     );
   }
