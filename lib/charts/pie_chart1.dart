@@ -50,8 +50,7 @@ class _StockPieChartState extends State<StockPieChart> {
 
               case 1:
                 {
-                  return charts.ColorUtil.fromDartColor(
-                      Theme.of(context).accentColor);
+                  return charts.ColorUtil.fromDartColor(Colors.transparent);
                 }
 
               default:

@@ -48,12 +48,12 @@ class _StockEachState extends State<StockEach> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(2.0, 2.0),
-                    blurRadius: 5.0,
-                    spreadRadius: 2.0,
-                  )
+                  // BoxShadow(
+                  //   color: Colors.grey,
+                  //   offset: Offset(2.0, 2.0),
+                  //   blurRadius: 5.0,
+                  //   spreadRadius: 2.0,
+                  // )
                 ],
                 color: Theme.of(context).cardColor,
               ),
@@ -128,14 +128,14 @@ class _StockEachState extends State<StockEach> {
               height: 85.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(2.0, 2.0),
-                    blurRadius: 5.0,
-                    spreadRadius: 2.0,
-                  )
-                ],
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: Colors.grey,
+                //     offset: Offset(2.0, 2.0),
+                //     blurRadius: 5.0,
+                //     spreadRadius: 2.0,
+                //   )
+                // ],
                 color: Theme.of(context).cardColor,
               ),
               child: Stack(

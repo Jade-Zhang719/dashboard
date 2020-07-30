@@ -123,14 +123,14 @@ class _RatingTableState extends State<RatingTable> {
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey,
-            offset: Offset(2.0, 2.0),
-            blurRadius: 5.0,
-            spreadRadius: 2.0,
-          )
-        ],
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.grey,
+        //     offset: Offset(2.0, 2.0),
+        //     blurRadius: 5.0,
+        //     spreadRadius: 2.0,
+        //   )
+        // ],
         color: (isDark) ? Theme.of(context).primaryColor : Colors.white,
       ),
       margin: isMobile

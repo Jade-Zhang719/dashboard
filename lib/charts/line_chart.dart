@@ -10,10 +10,23 @@ class RecordsLineChart extends StatefulWidget {
 }
 
 class _RecordsLineChartState extends State<RecordsLineChart> {
-  List<FlSpot> spots;
+  List<FlSpot> spots1;
+  List<FlSpot> spots2;
   @override
   void initState() {
-    spots = [
+    spots1 = [
+      FlSpot(1, 0),
+      FlSpot(2, 0),
+      FlSpot(3, 0),
+      FlSpot(4, 0),
+      FlSpot(5, 0),
+      FlSpot(6, 0),
+      FlSpot(7, 0),
+      FlSpot(8, 0),
+      FlSpot(9, 0),
+      FlSpot(10, 0),
+    ];
+    spots2 = [
       FlSpot(1, 0),
       FlSpot(2, 0),
       FlSpot(3, 0),
@@ -32,7 +45,19 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
   Future<void> _changeSpots() async {
     await Future.delayed(new Duration(milliseconds: 500));
     setState(() {
-      spots = [
+      spots1 = [
+        FlSpot(1, Random().nextDouble() * 50),
+        FlSpot(2, Random().nextDouble() * 50),
+        FlSpot(3, Random().nextDouble() * 50),
+        FlSpot(4, Random().nextDouble() * 50),
+        FlSpot(5, Random().nextDouble() * 50),
+        FlSpot(6, Random().nextDouble() * 50),
+        FlSpot(7, Random().nextDouble() * 50),
+        FlSpot(8, Random().nextDouble() * 50),
+        FlSpot(9, Random().nextDouble() * 50),
+        FlSpot(10, Random().nextDouble() * 50),
+      ];
+      spots2 = [
         FlSpot(1, Random().nextDouble() * 50),
         FlSpot(2, Random().nextDouble() * 50),
         FlSpot(3, Random().nextDouble() * 50),
@@ -177,7 +202,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
   List<LineChartBarData> linesBarData() {
     return [
       LineChartBarData(
-        spots: spots,
+        spots: spots1,
         isCurved: true,
         curveSmoothness: 0,
         colors: [
@@ -194,18 +219,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
         ),
       ),
       LineChartBarData(
-        spots: [
-          FlSpot(1, Random().nextDouble() * 50),
-          FlSpot(2, Random().nextDouble() * 50),
-          FlSpot(3, Random().nextDouble() * 50),
-          FlSpot(4, Random().nextDouble() * 50),
-          FlSpot(5, Random().nextDouble() * 50),
-          FlSpot(6, Random().nextDouble() * 50),
-          FlSpot(7, Random().nextDouble() * 50),
-          FlSpot(8, Random().nextDouble() * 50),
-          FlSpot(9, Random().nextDouble() * 50),
-          FlSpot(10, Random().nextDouble() * 50),
-        ],
+        spots: spots2,
         isCurved: true,
         curveSmoothness: 0,
         colors: [
