@@ -1,13 +1,16 @@
 import 'dart:math';
 
+import 'package:dashboard/charts/gauge_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kdgaugeview/kdgaugeview.dart';
 
 import '../items/optionButton.dart';
 
 // ignore: must_be_immutable
 class RangeDataLabel extends StatefulWidget {
+  final isDark;
+
+  const RangeDataLabel({Key key, this.isDark}) : super(key: key);
   @override
   _RangeDataLabelState createState() => _RangeDataLabelState();
 }
@@ -16,13 +19,20 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
   int totalStock;
   int stockOnHand;
   double percentage;
-
+  bool isDark;
   @override
   void initState() {
     totalStock = Random().nextInt(1000);
     stockOnHand = Random().nextInt(totalStock);
     percentage = stockOnHand / totalStock * 100;
+    isDark = widget.isDark;
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(RangeDataLabel oldWidget) {
+    isDark = widget.isDark;
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -76,32 +86,8 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                     width: 200.w,
                     height: 200.w,
                     padding: EdgeInsets.only(top: 20.w, right: 20.w),
-                    child: KdGaugeView(
-                      innerCirclePadding: 10.w,
-                      unitOfMeasurement: "Stock Level (%)",
-                      unitOfMeasurementTextStyle: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 8.w),
-                      minMaxTextStyle: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 5.w),
-                      speedTextStyle: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.w),
-                      minSpeed: 0,
-                      maxSpeed: 100,
-                      speed: percentage,
-                      animate: true,
-                      alertSpeedArray: [40, 80, 100],
-                      alertColorArray: [
-                        Colors.orange,
-                        Colors.indigo,
-                        Colors.red
-                      ],
-                      duration: Duration(seconds: 1),
+                    child: new GaugeForStockLevel(
+                      percentage: percentage,
                     ),
                   ),
                 )
@@ -154,32 +140,8 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                     width: 400.w,
                     height: 400.w,
                     padding: EdgeInsets.only(top: 20.w, right: 20.w),
-                    child: KdGaugeView(
-                      innerCirclePadding: 10.w,
-                      unitOfMeasurement: "Stock Level (%)",
-                      unitOfMeasurementTextStyle: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 5.w),
-                      minMaxTextStyle: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 5.w),
-                      speedTextStyle: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.w),
-                      minSpeed: 0,
-                      maxSpeed: 100,
-                      speed: percentage,
-                      animate: true,
-                      alertSpeedArray: [40, 80, 100],
-                      alertColorArray: [
-                        Colors.orange,
-                        Colors.indigo,
-                        Colors.red
-                      ],
-                      duration: Duration(seconds: 1),
+                    child: new GaugeForStockLevel(
+                      percentage: percentage,
                     ),
                   ),
                 ),

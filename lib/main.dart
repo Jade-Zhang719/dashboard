@@ -22,6 +22,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Dashboard",
+      theme: ThemeData(
+        primaryColor: const Color(0xff262545),
+        primaryColorDark: const Color(0xff201f39),
+        brightness: Brightness.dark,
+      ),
       home: MyHomePage(),
     );
   }
@@ -33,6 +38,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool isDark = false;
   @override
   Widget build(BuildContext context) {
     //Tablet : 1366 x 1024
@@ -64,11 +70,28 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(
           "Dashboard",
         ),
+        actions: [
+          FlatButton(
+              onPressed: () {
+                setState(() {
+                  isDark = !isDark;
+                });
+              },
+              child: Icon(
+                Icons.refresh,
+                color: Colors.white,
+              ))
+        ],
+        backgroundColor:
+            (isDark) ? Theme.of(context).primaryColor : Colors.blue,
       ),
       body: Center(
         child: isMobile
             ? Container(
-                color: Colors.indigo[50],
+                // color: Colors.indigo[50],
+                color: (isDark)
+                    ? Theme.of(context).primaryColorDark
+                    : Colors.indigo[50],
                 width: width,
                 height: height,
                 padding: EdgeInsets.all(5.w),
@@ -99,7 +122,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 360.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 5.w, bottom: 10.w),
-                      child: LastTenDetails(),
+                      child: LastTenDetails(
+                        isDark: isDark,
+                      ),
                     ),
                     Divider(
                       height: 1,
@@ -138,7 +163,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )
             : Container(
-                color: Colors.indigo[50],
+                // color: Colors.indigo[50],
+                color: (isDark)
+                    ? Theme.of(context).primaryColorDark
+                    : Colors.indigo[50],
                 child: Flex(
                   direction: Axis.horizontal,
                   children: [
@@ -162,7 +190,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 Expanded(
                                   flex: 3,
-                                  child: LastTenDetails(),
+                                  child: LastTenDetails(
+                                    isDark: isDark,
+                                  ),
                                 ),
                               ],
                             ),
@@ -181,7 +211,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         children: [
                           Expanded(
                             flex: 7,
-                            child: RangeDataLabel(),
+                            child: new RangeDataLabel(
+                              isDark: isDark,
+                            ),
                           ),
                           Expanded(
                             flex: 9,

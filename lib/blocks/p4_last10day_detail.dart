@@ -6,6 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../charts/line_chart2.dart';
 
 class LastTenDetails extends StatefulWidget {
+  final isDark;
+
+  const LastTenDetails({Key key, this.isDark}) : super(key: key);
   @override
   _LastTenDetailsState createState() => _LastTenDetailsState();
 }
@@ -16,6 +19,7 @@ class _LastTenDetailsState extends State<LastTenDetails> {
   int jackets;
   int accessories;
   int total;
+  bool isDark;
   @override
   void initState() {
     shirts = Random().nextInt(1000);
@@ -23,7 +27,14 @@ class _LastTenDetailsState extends State<LastTenDetails> {
     jackets = Random().nextInt(1000);
     accessories = Random().nextInt(1000);
     total = shirts + pants + jackets + accessories;
+    isDark = widget.isDark;
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(LastTenDetails oldWidget) {
+    isDark = widget.isDark;
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -77,7 +88,9 @@ class _LastTenDetailsState extends State<LastTenDetails> {
             ),
             Expanded(
               flex: 5,
-              child: LineChartSample2(),
+              child: LineChartSample2(
+                isDark: isDark,
+              ),
             ),
           ],
         ),
