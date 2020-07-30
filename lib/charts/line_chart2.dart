@@ -47,6 +47,21 @@ class _LineChartSample2State extends State<LineChartSample2> {
   }
 
   @override
+  void didUpdateWidget(LineChartSample2 oldWidget) {
+    spots = [
+      FlSpot(1, 0),
+      FlSpot(2, 0),
+      FlSpot(3, 0),
+      FlSpot(5, 0),
+      FlSpot(7, 0),
+      FlSpot(8, 0),
+      FlSpot(10, 0),
+    ];
+    _changeSpots();
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: 75.h,
