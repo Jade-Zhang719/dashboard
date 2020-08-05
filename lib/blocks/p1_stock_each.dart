@@ -8,6 +8,9 @@ import '../items/clothIcon.dart';
 import '../items/optionButton.dart';
 
 class StockEach extends StatefulWidget {
+  final int screenType;
+
+  const StockEach({Key key, this.screenType}) : super(key: key);
   @override
   _StockEachState createState() => _StockEachState();
 }
@@ -17,21 +20,31 @@ class _StockEachState extends State<StockEach> {
   int trousers;
   int jackets;
   int accessories;
-
+  int screenType;
   @override
   void initState() {
     shirts = Random().nextInt(1000);
     trousers = Random().nextInt(1000);
     jackets = Random().nextInt(1000);
     accessories = Random().nextInt(1000);
+    screenType = widget.screenType;
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(StockEach oldWidget) {
+    shirts = Random().nextInt(1000);
+    trousers = Random().nextInt(1000);
+    jackets = Random().nextInt(1000);
+    accessories = Random().nextInt(1000);
+    screenType = widget.screenType;
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    bool isMobile = height > width;
 
     Container _stockCard(String variety, double stockPercent) {
       IconData cloth = (variety == "T-shirt")
@@ -41,20 +54,12 @@ class _StockEachState extends State<StockEach> {
               : (variety == "Jacket")
                   ? ClothIcons.Jacket
                   : ClothIcons.Accessories;
-      return isMobile
+      return screenType == 2
           ? Container(
               width: 180.w,
               height: 125.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                boxShadow: [
-                  // BoxShadow(
-                  //   color: Colors.grey,
-                  //   offset: Offset(2.0, 2.0),
-                  //   blurRadius: 5.0,
-                  //   spreadRadius: 2.0,
-                  // )
-                ],
                 color: Theme.of(context).cardColor,
               ),
               child: Stack(children: [
@@ -109,7 +114,7 @@ class _StockEachState extends State<StockEach> {
                             child: Text(
                               "Stock of \n $variety",
                               textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyText1,
+                              style: Theme.of(context).textTheme.headline2,
                             ),
                           ),
                           OptionButton(txSize: 5.w),
@@ -121,81 +126,85 @@ class _StockEachState extends State<StockEach> {
               ]),
             )
           : Container(
-              width: 240.w,
-              height: 85.h,
+              width: width * 0.16,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                // boxShadow: [
-                //   BoxShadow(
-                //     color: Colors.grey,
-                //     offset: Offset(2.0, 2.0),
-                //     blurRadius: 5.0,
-                //     spreadRadius: 2.0,
-                //   )
-                // ],
                 color: Theme.of(context).cardColor,
               ),
-              child: Stack(
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(15.w, 0, 30.w, 0),
-                    child: StockPieChart(value: stockPercent),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 75.w,
-                        height: 85.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(5),
-                            topLeft: Radius.circular(5),
-                          ),
-                          color: Theme.of(context).accentColor,
-                        ),
-                        child: Icon(
-                          cloth,
-                          color: Colors.blue,
-                          size: 50.w,
-                        ),
-                      ),
-                      Container(
-                        width: 60.w,
-                        height: 60.w,
-                        padding: EdgeInsets.only(left: 8.w),
-                        child: Center(
-                          child: Text(
-                            "${stockPercent.toString()}%",
-                            style: Theme.of(context).textTheme.bodyText2,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 90.w,
-                        height: 70.h,
-                        margin: EdgeInsets.only(right: 10.w),
-                        alignment: Alignment.center,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              "Stock of\n$variety",
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyText1,
+              child: AspectRatio(
+                aspectRatio: screenType == 1 ? 2.7 : 1.5,
+                child: Stack(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(
+                          5.w, screenType == 1 ? 10.w : 35.w, 30.w, 0),
+                      child: StockPieChart(value: stockPercent),
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            constraints: BoxConstraints.expand(),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(5),
+                                topLeft: Radius.circular(5),
+                              ),
+                              color: Theme.of(context).accentColor,
                             ),
-                            OptionButton(txSize: 5.w),
-                          ],
+                            child: Icon(
+                              cloth,
+                              color: Colors.blue,
+                              size: 45.w,
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        Expanded(
+                          flex: 3,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(top: 5),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Stock of $variety",
+                                  style: Theme.of(context).textTheme.headline2,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.fromLTRB(
+                                        10.w, 10.w, 0, 30.w),
+                                    child: Center(
+                                      child: Text(
+                                        "${stockPercent.toString()}%",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: OptionButton(txSize: 5.w),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             );
     }
 
-    return isMobile
+    return screenType == 2
         ? Container(
             constraints: BoxConstraints.expand(),
             alignment: Alignment.center,
@@ -221,8 +230,6 @@ class _StockEachState extends State<StockEach> {
           )
         : Container(
             constraints: BoxConstraints.expand(),
-            margin: EdgeInsets.fromLTRB(20.w, 20.w, 20.w, 0),
-            alignment: Alignment.topLeft,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

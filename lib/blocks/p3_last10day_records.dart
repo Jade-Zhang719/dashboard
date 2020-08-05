@@ -13,7 +13,14 @@ class LastTenRecords extends StatefulWidget {
 class _LastTenRecordsState extends State<LastTenRecords> {
   int loanQty;
   int returnQty;
-
+  String dropdownValue1 = "Option 1";
+  List<String> options1 = [
+    "Option 1",
+  ];
+  String dropdownValue2 = "Option 2";
+  List<String> options2 = [
+    "Option 2",
+  ];
   @override
   void initState() {
     loanQty = Random().nextInt(1000);
@@ -47,7 +54,7 @@ class _LastTenRecordsState extends State<LastTenRecords> {
                         Container(
                           child: Text(
                             "Loan: $loanQty  Return: $returnQty",
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: Theme.of(context).textTheme.headline2,
                           ),
                         ),
                       ],
@@ -64,7 +71,6 @@ class _LastTenRecordsState extends State<LastTenRecords> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 5.h),
                       child: Row(
                         children: [
                           Container(
@@ -73,15 +79,12 @@ class _LastTenRecordsState extends State<LastTenRecords> {
                               color: Colors.blue,
                             ),
                             margin: EdgeInsets.only(right: 20.w),
-                            width: 20.w,
-                            height: 20.w,
+                            width: 15.w,
+                            height: 15.w,
                           ),
                           Text(
                             "Loan",
-                            style: TextStyle(
-                              color: Colors.blueGrey,
-                              fontSize: 15.w,
-                            ),
+                            style: Theme.of(context).textTheme.headline4,
                           ),
                         ],
                       ),
@@ -95,15 +98,12 @@ class _LastTenRecordsState extends State<LastTenRecords> {
                               color: Colors.green,
                             ),
                             margin: EdgeInsets.only(right: 20.w),
-                            width: 20.w,
-                            height: 20.w,
+                            width: 15.w,
+                            height: 15.w,
                           ),
                           Text(
                             "Return",
-                            style: TextStyle(
-                              color: Colors.blueGrey,
-                              fontSize: 15.w,
-                            ),
+                            style: Theme.of(context).textTheme.headline4,
                           ),
                         ],
                       ),
@@ -115,83 +115,167 @@ class _LastTenRecordsState extends State<LastTenRecords> {
           )
         : Container(
             constraints: BoxConstraints.expand(),
-            margin: EdgeInsets.only(left: 20.w),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(left: 20.w),
-                      child: Text(
-                        "Last 10 Days Records ",
-                        style: Theme.of(context).textTheme.headline1,
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(left: 20.w),
+                              child: Text(
+                                "Last 10 Days Records ",
+                                style: Theme.of(context).textTheme.headline1,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 20.w),
+                              child: Text(
+                                "Loan: $loanQty  Return: $returnQty",
+                                style: Theme.of(context).textTheme.headline2,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 20.w),
-                      child: Text(
-                        "Loan: $loanQty  Return: $returnQty",
-                        style: Theme.of(context).textTheme.bodyText1,
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Container(
+                                  height: 40.h,
+                                  child: DropdownButton<String>(
+                                    iconSize: 20.w,
+                                    dropdownColor: Theme.of(context).cardColor,
+                                    value: dropdownValue1,
+                                    style:
+                                        Theme.of(context).textTheme.bodyText2,
+                                    onChanged: (String newValue) {
+                                      setState(() {
+                                        dropdownValue1 = newValue;
+                                      });
+                                    },
+                                    underline: Container(),
+                                    elevation: 6,
+                                    items: options1
+                                        .map<DropdownMenuItem<String>>(
+                                            (String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Container(
+                                          child: Text(
+                                            value,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2,
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                                Container(
+                                  height: 40.h,
+                                  child: DropdownButton<String>(
+                                    iconSize: 20.w,
+                                    dropdownColor: Theme.of(context).cardColor,
+                                    value: dropdownValue2,
+                                    style:
+                                        Theme.of(context).textTheme.bodyText2,
+                                    onChanged: (String newValue) {
+                                      setState(() {
+                                        dropdownValue2 = newValue;
+                                      });
+                                    },
+                                    underline: Container(),
+                                    elevation: 6,
+                                    items: options2
+                                        .map<DropdownMenuItem<String>>(
+                                            (String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Container(
+                                          child: Text(
+                                            value,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2,
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: OptionButton(txSize: 10.w),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                RecordsLineChart(),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.blue,
-                            ),
-                            margin: EdgeInsets.only(right: 20.w),
-                            width: 30.w,
-                            height: 30.w,
-                          ),
-                          Text(
-                            "Loan",
-                            style: TextStyle(
-                              color: Colors.blueGrey,
-                              fontSize: 20.w,
-                            ),
-                          ),
-                        ],
-                      ),
+                Expanded(
+                  flex: 7,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Theme.of(context).cardColor,
                     ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.green,
-                            ),
-                            margin: EdgeInsets.only(right: 20.w),
-                            width: 30.w,
-                            height: 30.w,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: 20.w, top: 10.w),
+                          child: Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.blue,
+                                ),
+                                margin: EdgeInsets.only(right: 20.w),
+                                width: 20.w,
+                                height: 20.w,
+                              ),
+                              Text(
+                                "Loan",
+                                style: Theme.of(context).textTheme.headline4,
+                              ),
+                            ],
                           ),
-                          Text(
-                            "Return",
-                            style: TextStyle(
-                              color: Colors.blueGrey,
-                              fontSize: 20.w,
-                            ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 20.w),
+                          child: Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.green,
+                                ),
+                                margin: EdgeInsets.only(right: 20.w),
+                                width: 20.w,
+                                height: 20.w,
+                              ),
+                              Text(
+                                "Return",
+                                style: Theme.of(context).textTheme.headline4,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                        RecordsLineChart(),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),

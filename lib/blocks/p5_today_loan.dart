@@ -45,18 +45,6 @@ class _TodayLoanState extends State<TodayLoan> {
     double height = MediaQuery.of(context).size.height;
     bool isMobile = height > width;
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.grey,
-        //     offset: Offset(2.0, 2.0),
-        //     blurRadius: 5.0,
-        //     spreadRadius: 2.0,
-        //   )
-        // ],
-        color: Theme.of(context).cardColor,
-      ),
       margin: isMobile ? EdgeInsets.all(1) : EdgeInsets.only(right: 20.w),
       child: Stack(
         children: [
@@ -121,7 +109,7 @@ class _TodayLoanState extends State<TodayLoan> {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(left: 80.w),
+            margin: EdgeInsets.only(left: 120.w, top: 20.w),
             child: DonutPieChart(
               animate: true,
               shirts: shirts,
@@ -132,14 +120,22 @@ class _TodayLoanState extends State<TodayLoan> {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(left: 80.w),
+            margin: EdgeInsets.only(left: 120.w, top: 20.w),
             alignment: Alignment.center,
-            child: Text(
-              "$total",
-              style: TextStyle(
-                color: Colors.blue,
-                fontSize: 40.w,
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "$total",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline1,
+                ),
+                Text(
+                  "Loaned\nItems",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline2,
+                ),
+              ],
             ),
           )
         ],

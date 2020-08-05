@@ -1,7 +1,7 @@
 import 'package:charts_common/common.dart' as common;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'dart:ui';
 import 'blocks/p1_stock_each.dart';
 import 'blocks/p2_stock_level.dart';
 import 'blocks/p3_last10day_records.dart';
@@ -25,10 +25,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool isDark = true;
-  void onChanged(val) {
+  bool isDark = false;
+  int screenType = 2;
+  void onChangedTheme(val) {
     setState(() {
       isDark = val;
+    });
+  }
+
+  void onChangedScreen(val) {
+    setState(() {
+      screenType = val;
     });
   }
 
@@ -36,48 +43,138 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Dashboard",
-      theme: ThemeData(
-        primaryColor: isDark ? Color(0xff262545) : Colors.blue,
-        accentColor: isDark ? Color(0xff32315e) : Colors.blue[50],
-        scaffoldBackgroundColor: isDark ? Color(0xff2f2d3b) : Colors.indigo[50],
-        cardColor: isDark ? Color(0xff45415c) : Colors.white,
-        textTheme: TextTheme(
-          headline1: TextStyle(
-            color: isDark ? Colors.blue : Colors.blueGrey,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-          headline2: TextStyle(
-            color: isDark ? Colors.blue : Colors.blueGrey,
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-          ),
-          bodyText1: TextStyle(
-            color: isDark ? Colors.blue : Colors.blueGrey,
-            fontSize: 10,
-          ),
-          bodyText2: TextStyle(
-            color: isDark ? Colors.white : Colors.blueGrey,
-            fontSize: 10,
-          ),
-        ),
+      theme: screenType == 1
+          //web
+          ? ThemeData(
+              primaryColor: isDark ? Color(0xff262545) : Colors.blue,
+              accentColor: isDark ? Color(0xff32315e) : Colors.blue[50],
+              scaffoldBackgroundColor:
+                  isDark ? Color(0xff2f2d3b) : Colors.indigo[50],
+              cardColor: isDark ? Color(0xff45415c) : Colors.white,
+              textTheme: TextTheme(
+                headline1: TextStyle(
+                  color: isDark ? Colors.blue : Colors.blueGrey,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+                headline2: TextStyle(
+                  color: isDark ? Colors.blue : Colors.blueGrey,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+                headline3: TextStyle(
+                  color: isDark ? Colors.blue : Colors.blueGrey,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                headline4: TextStyle(
+                  color: Colors.blueGrey,
+                  fontSize: 16,
+                ),
+                bodyText1: TextStyle(
+                  color: isDark ? Colors.blue : Colors.blueGrey,
+                  fontSize: 10,
+                ),
+                bodyText2: TextStyle(
+                  color: isDark ? Colors.white : Colors.blueGrey,
+                  fontSize: 10,
+                ),
+              ),
+            )
+          : screenType == 2
+              //mobile
+              ? ThemeData(
+                  primaryColor: isDark ? Color(0xff262545) : Colors.blue,
+                  accentColor: isDark ? Color(0xff32315e) : Colors.blue[50],
+                  scaffoldBackgroundColor:
+                      isDark ? Color(0xff2f2d3b) : Colors.indigo[50],
+                  cardColor: isDark ? Color(0xff45415c) : Colors.white,
+                  textTheme: TextTheme(
+                    headline1: TextStyle(
+                      color: isDark ? Colors.blue : Colors.blueGrey,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    headline2: TextStyle(
+                      color: isDark ? Colors.blue : Colors.blueGrey,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    headline3: TextStyle(
+                      color: isDark ? Colors.blue : Colors.blueGrey,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    headline4: TextStyle(
+                      color: Colors.blueGrey,
+                      fontSize: 12,
+                    ),
+                    bodyText1: TextStyle(
+                      color: isDark ? Colors.blue : Colors.blueGrey,
+                      fontSize: 8,
+                    ),
+                    bodyText2: TextStyle(
+                      color: isDark ? Colors.white : Colors.blueGrey,
+                      fontSize: 8,
+                    ),
+                  ),
+                )
+              : //tablet
+              ThemeData(
+                  primaryColor: isDark ? Color(0xff262545) : Colors.blue,
+                  accentColor: isDark ? Color(0xff32315e) : Colors.blue[50],
+                  scaffoldBackgroundColor:
+                      isDark ? Color(0xff2f2d3b) : Colors.indigo[50],
+                  cardColor: isDark ? Color(0xff45415c) : Colors.white,
+                  textTheme: TextTheme(
+                    headline1: TextStyle(
+                      color: isDark ? Colors.blue : Colors.blueGrey,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    headline2: TextStyle(
+                      color: isDark ? Colors.blue : Colors.blueGrey,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    headline3: TextStyle(
+                      color: isDark ? Colors.blue : Colors.blueGrey,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    headline4: TextStyle(
+                      color: Colors.blueGrey,
+                      fontSize: 16,
+                    ),
+                    bodyText1: TextStyle(
+                      color: isDark ? Colors.blue : Colors.blueGrey,
+                      fontSize: 10,
+                    ),
+                    bodyText2: TextStyle(
+                      color: isDark ? Colors.white : Colors.blueGrey,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
+      home: MyHomePage(
+        theme: (value) => onChangedTheme(value),
+        screen: (value) => onChangedScreen(value),
       ),
-      home: MyHomePage(callback: (value) => onChanged(value)),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  final callback;
-
-  const MyHomePage({Key key, this.callback}) : super(key: key);
+  final theme;
+  final screen;
+  const MyHomePage({Key key, this.theme, this.screen}) : super(key: key);
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isDark = true;
-
+  bool isDark = false;
+  int screenType = 2;
   @override
   Widget build(BuildContext context) {
     //Tablet : 1366 x 1024
@@ -88,7 +185,31 @@ class _MyHomePageState extends State<MyHomePage> {
     double height = MediaQuery.of(context).size.height;
     print(width);
     print(height);
-
+    if (width / height > 1.5) {
+      Future.delayed(Duration(milliseconds: 100)).then((e) {
+        if (screenType != 1)
+          setState(() {
+            screenType = 1; //web
+            widget.screen(screenType);
+          });
+      });
+    } else if (width / height < 1) {
+      Future.delayed(Duration(milliseconds: 100)).then((e) {
+        if (screenType != 2)
+          setState(() {
+            screenType = 2; //mobile
+            widget.screen(screenType);
+          });
+      });
+    } else {
+      Future.delayed(Duration(milliseconds: 100)).then((e) {
+        if (screenType != 3)
+          setState(() {
+            screenType = 3; //tablet
+            widget.screen(screenType);
+          });
+      });
+    }
     bool isMobile = height > width;
     isMobile
         ? ScreenUtil.init(
@@ -114,7 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               setState(() {
                 isDark = !isDark;
-                widget.callback(isDark);
+                widget.theme(isDark);
               });
             },
             child: Icon(
@@ -125,7 +246,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: Center(
-        child: isMobile
+        child: screenType == 2
             ? Container(
                 color: Theme.of(context).scaffoldBackgroundColor,
                 width: width,
@@ -134,8 +255,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: ListView(
                   children: [
                     Container(
-                      height: 260.h,
-                      child: StockEach(),
+                      height: 255.h,
+                      child: StockEach(screenType: screenType),
                     ),
                     Container(
                       height: 200.h,
@@ -151,16 +272,16 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.blueGrey,
                     ),
                     Container(
-                      height: 340.h,
+                      height: 250.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 5.w),
                       child: LastTenRecords(),
                     ),
                     Container(
-                      height: 360.h,
+                      height: 300.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 5.w, bottom: 10.w),
-                      child: LastTenDetails(),
+                      child: LastTenDetails(screenType: screenType),
                     ),
                     Divider(
                       height: 1,
@@ -194,7 +315,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.blueGrey,
                     ),
                     Container(
-                      height: 270.h,
+                      height: 380.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 10.w),
                       child: LastYearLaundry(),
@@ -214,7 +335,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         children: [
                           Expanded(
                             flex: 5,
-                            child: StockEach(),
+                            child: Container(
+                              margin:
+                                  EdgeInsets.fromLTRB(20.w, 20.w, 10.w, 10.w),
+                              child: StockEach(screenType: screenType),
+                            ),
                           ),
                           Expanded(
                             flex: 15,
@@ -223,18 +348,31 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: [
                                 Expanded(
                                   flex: 5,
-                                  child: LastTenRecords(),
+                                  child: Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        20.w, 10.w, 10.w, 10.w),
+                                    child: LastTenRecords(),
+                                  ),
                                 ),
                                 Expanded(
                                   flex: 3,
-                                  child: LastTenDetails(),
+                                  child: Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        10.w, 10.w, 10.w, 10.w),
+                                    child:
+                                        LastTenDetails(screenType: screenType),
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                           Expanded(
                             flex: 8,
-                            child: LastYearLaundry(),
+                            child: Container(
+                              margin:
+                                  EdgeInsets.fromLTRB(20.w, 10.w, 10.w, 20.w),
+                              child: LastYearLaundry(),
+                            ),
                           ),
                         ],
                       ),
@@ -245,21 +383,42 @@ class _MyHomePageState extends State<MyHomePage> {
                         direction: Axis.vertical,
                         children: [
                           Expanded(
-                            flex: 7,
-                            child: new RangeDataLabel(
-                              isDark: isDark,
-                            ),
-                          ),
+                              flex: 7,
+                              child: Container(
+                                constraints: BoxConstraints.expand(),
+                                margin:
+                                    EdgeInsets.fromLTRB(10.w, 20.w, 20.w, 10.w),
+                                padding: EdgeInsets.only(left: 20.w),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Theme.of(context).cardColor,
+                                ),
+                                child: new RangeDataLabel(
+                                  isDark: isDark,
+                                ),
+                              )),
                           Expanded(
                             flex: 9,
-                            child: TodayLoan(
-                              isDark: isDark,
+                            child: Container(
+                              margin:
+                                  EdgeInsets.fromLTRB(10.w, 10.w, 20.w, 10.w),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Theme.of(context).cardColor,
+                              ),
+                              child: TodayLoan(
+                                isDark: isDark,
+                              ),
                             ),
                           ),
                           Expanded(
                             flex: 5,
-                            child: RatingTable(
-                              isDark: isDark,
+                            child: Container(
+                              margin:
+                                  EdgeInsets.fromLTRB(10.w, 10.w, 20.w, 20.w),
+                              child: RatingTable(
+                                isDark: isDark,
+                              ),
                             ),
                           ),
                         ],

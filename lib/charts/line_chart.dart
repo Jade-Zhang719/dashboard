@@ -109,16 +109,13 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 240.h,
-      width: 650.w,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        color: Theme.of(context).cardColor,
-      ),
       padding: EdgeInsets.all(20.w),
-      child: LineChart(
-        sampleData(),
-        swapAnimationDuration: duration,
+      child: AspectRatio(
+        aspectRatio: 3.5,
+        child: LineChart(
+          sampleData(),
+          swapAnimationDuration: duration,
+        ),
       ),
     );
   }

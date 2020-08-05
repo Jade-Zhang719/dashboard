@@ -44,7 +44,7 @@ class _GaugeForStockLevelState extends State<GaugeForStockLevel> {
       unitOfMeasurementTextStyle: TextStyle(
           color: (isDark) ? Colors.white : Colors.black,
           fontWeight: FontWeight.bold,
-          fontSize: 5.w),
+          fontSize: 10.w),
       minMaxTextStyle: TextStyle(
           color: (isDark) ? Colors.white : Colors.black,
           fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class _GaugeForStockLevelState extends State<GaugeForStockLevel> {
       speedTextStyle: TextStyle(
           color: (isDark) ? Colors.white : Colors.black,
           fontWeight: FontWeight.bold,
-          fontSize: 20.w),
+          fontSize: 24.w),
       minSpeed: 0,
       maxSpeed: 100,
       speed: percentage,

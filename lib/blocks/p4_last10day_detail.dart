@@ -6,6 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../charts/line_chart2.dart';
 
 class LastTenDetails extends StatefulWidget {
+  final int screenType;
+
+  const LastTenDetails({Key key, this.screenType}) : super(key: key);
   @override
   _LastTenDetailsState createState() => _LastTenDetailsState();
 }
@@ -16,7 +19,7 @@ class _LastTenDetailsState extends State<LastTenDetails> {
   int jackets;
   int accessories;
   int total;
-
+  int screenType;
   @override
   void initState() {
     shirts = Random().nextInt(1000);
@@ -24,64 +27,68 @@ class _LastTenDetailsState extends State<LastTenDetails> {
     jackets = Random().nextInt(1000);
     accessories = Random().nextInt(1000);
     total = shirts + pants + jackets + accessories;
-
+    screenType = widget.screenType;
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(LastTenDetails oldWidget) {
+    shirts = Random().nextInt(1000);
+    pants = Random().nextInt(1000);
+    jackets = Random().nextInt(1000);
+    accessories = Random().nextInt(1000);
+    total = shirts + pants + jackets + accessories;
+    screenType = widget.screenType;
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
   Widget build(BuildContext context) {
     Container _stockCard(String variety, int amount) {
       return Container(
-        width: 360.w,
-        height: 85.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           color: Theme.of(context).cardColor,
         ),
-        padding: EdgeInsets.all(10.w),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              flex: 3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Text(
-                      variety,
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 20.w,
-                          fontWeight: FontWeight.bold),
+        padding: EdgeInsets.only(left: 10.w),
+        child: AspectRatio(
+          aspectRatio: screenType == 3 ? 2.8 : 4.8,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                flex: 3,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      child: Text(
+                        variety,
+                        style: Theme.of(context).textTheme.headline1,
+                      ),
                     ),
-                  ),
-                  Container(
-                    child: Text(
-                      "Loan by last 10 days",
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 8.w,
-                          fontWeight: FontWeight.w600),
+                    Container(
+                      child: Text(
+                        "Loan by last 10 days",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
                     ),
-                  ),
-                  Container(
-                    child: Text(
-                      "$amount",
-                      style: TextStyle(
-                          color: Color(0xff2F4860),
-                          fontSize: 20.w,
-                          fontWeight: FontWeight.w600),
+                    Container(
+                      child: Text(
+                        "$amount",
+                        style: Theme.of(context).textTheme.headline3,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              flex: 5,
-              child: LineChartSample2(),
-            ),
-          ],
+              Expanded(
+                flex: 2,
+                child: LineChartSample2(),
+              ),
+            ],
+          ),
         ),
       );
     }

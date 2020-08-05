@@ -85,7 +85,6 @@ class RecordsBarChartState extends State<RecordsBarChart> {
     bool isMobile = height > width;
     return Container(
       width: 840.w,
-      height: 150.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomRight: Radius.circular(5),
@@ -194,8 +193,8 @@ class RecordsBarChartState extends State<RecordsBarChart> {
         BarChartRodData(
           y: y,
           color: Colors.blue,
-          width: 20.w,
-          borderRadius: BorderRadius.circular(2),
+          width: 8.w,
+          borderRadius: BorderRadius.circular(8),
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
             y: 20,

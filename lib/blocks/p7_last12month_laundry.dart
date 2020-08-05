@@ -48,13 +48,11 @@ class _LastYearLaundryState extends State<LastYearLaundry> {
           )
         : Container(
             constraints: BoxConstraints.expand(),
-            margin: EdgeInsets.fromLTRB(20.w, 20.w, 10.w, 20.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   width: 200.w,
-                  height: 150.h,
                   padding: EdgeInsets.all(15.w),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -68,10 +66,10 @@ class _LastYearLaundryState extends State<LastYearLaundry> {
                     children: [
                       Text(
                         "Monthly Performance",
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                       OptionButton(
-                        txSize: 10.w,
+                        txSize: 8.w,
                       ),
                     ],
                   ),

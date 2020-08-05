@@ -97,21 +97,6 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
             ),
           )
         : Container(
-            constraints: BoxConstraints.expand(),
-            margin: EdgeInsets.fromLTRB(0, 20.w, 20.w, 20.w),
-            padding: EdgeInsets.only(left: 20.w),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              // boxShadow: [
-              //   BoxShadow(
-              //     color: Colors.grey,
-              //     offset: Offset(2.0, 2.0),
-              //     blurRadius: 5.0,
-              //     spreadRadius: 2.0,
-              //   )
-              // ],
-              color: Theme.of(context).cardColor,
-            ),
             child: Row(
               children: [
                 Expanded(
@@ -120,16 +105,22 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        child: Text(
-                          "Total Stock On Hand",
-                          style: Theme.of(context).textTheme.headline1,
-                          // TextStyle(
-                          //   color: Colors.blueGrey,
-                          //   fontSize: 15.w,
-                          //   fontWeight: FontWeight.bold,
-                          // ),
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            child: Text(
+                              "Total Stock On Hand",
+                              style: Theme.of(context).textTheme.headline1,
+                            ),
+                          ),
+                          Container(
+                            child: Text(
+                              "Loaned Items",
+                              style: Theme.of(context).textTheme.headline2,
+                            ),
+                          ),
+                        ],
                       ),
                       OptionButton(
                         txSize: 10.w,

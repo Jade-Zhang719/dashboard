@@ -71,7 +71,7 @@ class DonutPieChart extends StatelessWidget {
       animate: animate,
       animationDuration: Duration(milliseconds: 1500),
       defaultRenderer: new charts.ArcRendererConfig(
-        arcWidth: 60.w.toInt(),
+        arcWidth: 35.w.toInt(),
         arcRendererDecorators: [
           new charts.ArcLabelDecorator(
             insideLabelStyleSpec: new charts.TextStyleSpec(

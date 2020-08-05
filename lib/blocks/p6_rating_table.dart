@@ -114,28 +114,13 @@ class _RatingTableState extends State<RatingTable> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    bool isMobile = height > width;
     return Container(
       width: 450.w,
       height: 230.w,
-      alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.grey,
-        //     offset: Offset(2.0, 2.0),
-        //     blurRadius: 5.0,
-        //     spreadRadius: 2.0,
-        //   )
-        // ],
         color: (isDark) ? Theme.of(context).primaryColor : Colors.white,
       ),
-      margin: isMobile
-          ? EdgeInsets.all(0)
-          : EdgeInsets.fromLTRB(0, 20.w, 20.w, 40.w),
       child: Table(
         border: TableBorder.symmetric(inside: BorderSide(color: Colors.grey)),
         columnWidths: {
