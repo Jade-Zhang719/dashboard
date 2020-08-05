@@ -1,16 +1,21 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'dart:math';
 
 import '../charts/line_chart.dart';
 import '../items/optionButton.dart';
 
 class LastTenRecords extends StatefulWidget {
+  final int screenType;
+
+  const LastTenRecords({Key key, this.screenType}) : super(key: key);
   @override
   _LastTenRecordsState createState() => _LastTenRecordsState();
 }
 
 class _LastTenRecordsState extends State<LastTenRecords> {
+  int screenType;
   int loanQty;
   int returnQty;
   String dropdownValue1 = "Option 1";
@@ -25,15 +30,21 @@ class _LastTenRecordsState extends State<LastTenRecords> {
   void initState() {
     loanQty = Random().nextInt(1000);
     returnQty = Random().nextInt(1000);
+    screenType = widget.screenType;
     super.initState();
   }
 
   @override
+  void didUpdateWidget(LastTenRecords oldWidget) {
+    loanQty = Random().nextInt(1000);
+    returnQty = Random().nextInt(1000);
+    screenType = widget.screenType;
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-    bool isMobile = height > width;
-    return isMobile
+    return screenType == 2
         ? Container(
             constraints: BoxConstraints.expand(),
             margin: EdgeInsets.only(top: 5.w),
@@ -65,7 +76,7 @@ class _LastTenRecordsState extends State<LastTenRecords> {
                     ),
                   ],
                 ),
-                RecordsLineChart(),
+                RecordsLineChart(screenType: screenType),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

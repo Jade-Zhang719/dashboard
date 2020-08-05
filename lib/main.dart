@@ -1,7 +1,9 @@
+import 'dart:ui';
+
 import 'package:charts_common/common.dart' as common;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'dart:ui';
+
 import 'blocks/p1_stock_each.dart';
 import 'blocks/p2_stock_level.dart';
 import 'blocks/p3_last10day_records.dart';
@@ -186,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
     print(width);
     print(height);
     if (width / height > 1.5) {
-      Future.delayed(Duration(milliseconds: 100)).then((e) {
+      Future.delayed(Duration(milliseconds: 1)).then((e) {
         if (screenType != 1)
           setState(() {
             screenType = 1; //web
@@ -194,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
           });
       });
     } else if (width / height < 1) {
-      Future.delayed(Duration(milliseconds: 100)).then((e) {
+      Future.delayed(Duration(milliseconds: 1)).then((e) {
         if (screenType != 2)
           setState(() {
             screenType = 2; //mobile
@@ -202,7 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
           });
       });
     } else {
-      Future.delayed(Duration(milliseconds: 100)).then((e) {
+      Future.delayed(Duration(milliseconds: 1)).then((e) {
         if (screenType != 3)
           setState(() {
             screenType = 3; //tablet
@@ -275,7 +277,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 250.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 5.w),
-                      child: LastTenRecords(),
+                      child: LastTenRecords(screenType: screenType),
                     ),
                     Container(
                       height: 300.h,
@@ -351,7 +353,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: Container(
                                     margin: EdgeInsets.fromLTRB(
                                         20.w, 10.w, 10.w, 10.w),
-                                    child: LastTenRecords(),
+                                    child:
+                                        LastTenRecords(screenType: screenType),
                                   ),
                                 ),
                                 Expanded(

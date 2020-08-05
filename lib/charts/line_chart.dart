@@ -5,17 +5,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RecordsLineChart extends StatefulWidget {
+  final int screenType;
+
+  const RecordsLineChart({Key key, this.screenType}) : super(key: key);
   @override
   State<StatefulWidget> createState() => _RecordsLineChartState();
 }
 
 class _RecordsLineChartState extends State<RecordsLineChart> {
+  int screenType;
   Duration duration;
   List<FlSpot> spots1;
   List<FlSpot> spots2;
   @override
   void initState() {
-    duration = Duration(seconds: 1);
+    duration = Duration(milliseconds: 500);
     spots1 = [
       FlSpot(1, 0),
       FlSpot(2, 0),
@@ -40,6 +44,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
       FlSpot(9, 0),
       FlSpot(10, 0),
     ];
+    screenType = widget.screenType;
     super.initState();
     _changeSpots();
   }
@@ -47,7 +52,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
   Future<void> _changeSpots() async {
     await Future.delayed(new Duration(milliseconds: 1));
     setState(() {
-      duration = Duration(seconds: 1);
+      duration = Duration(milliseconds: 500);
       spots1 = [
         FlSpot(1, Random().nextDouble() * 50),
         FlSpot(2, Random().nextDouble() * 50),
@@ -103,6 +108,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
       FlSpot(10, 0),
     ];
     _changeSpots();
+    screenType = widget.screenType;
     super.didUpdateWidget(oldWidget);
   }
 
@@ -111,7 +117,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
     return Container(
       padding: EdgeInsets.all(20.w),
       child: AspectRatio(
-        aspectRatio: 3.5,
+        aspectRatio: screenType == 1 ? 3.5 : 2.5,
         child: LineChart(
           sampleData(),
           swapAnimationDuration: duration,

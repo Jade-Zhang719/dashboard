@@ -66,7 +66,7 @@ class _StockPieChartState extends State<StockPieChart> {
     return new charts.PieChart(
       _createSampleData(),
       animate: true,
-      animationDuration: Duration(milliseconds: 1500),
+      animationDuration: Duration(milliseconds: 500),
       defaultRenderer: new charts.ArcRendererConfig(
         arcWidth: 10.w.toInt(),
       ),

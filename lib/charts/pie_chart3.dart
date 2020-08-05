@@ -69,7 +69,7 @@ class DonutPieChart extends StatelessWidget {
     return new charts.PieChart(
       _createSampleData(),
       animate: animate,
-      animationDuration: Duration(milliseconds: 1500),
+      animationDuration: Duration(milliseconds: 500),
       defaultRenderer: new charts.ArcRendererConfig(
         arcWidth: 35.w.toInt(),
         arcRendererDecorators: [

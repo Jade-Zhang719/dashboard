@@ -52,7 +52,7 @@ class _LastTenDetailsState extends State<LastTenDetails> {
         ),
         padding: EdgeInsets.only(left: 10.w),
         child: AspectRatio(
-          aspectRatio: screenType == 3 ? 2.8 : 4.8,
+          aspectRatio: screenType == 3 ? 3.2 : 4.8,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

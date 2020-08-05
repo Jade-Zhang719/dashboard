@@ -18,7 +18,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
   Duration duration;
   @override
   void initState() {
-    duration = Duration(seconds: 1);
+    duration = Duration(milliseconds: 500);
     spots = [
       FlSpot(1, 0),
       FlSpot(2, 0),
@@ -35,7 +35,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
   Future<void> _changeSpots() async {
     await Future.delayed(new Duration(milliseconds: 1));
     setState(() {
-      duration = Duration(seconds: 1);
+      duration = Duration(milliseconds: 500);
       spots = [
         FlSpot(1, Random().nextDouble() * 5),
         FlSpot(2, Random().nextDouble() * 5),
