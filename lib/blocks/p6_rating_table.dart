@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RatingTable extends StatefulWidget {
   final isDark;
-
-  const RatingTable({Key key, this.isDark}) : super(key: key);
+  final int screenType;
+  const RatingTable({Key key, this.isDark, this.screenType}) : super(key: key);
   @override
   _RatingTableState createState() => _RatingTableState();
 }
@@ -18,6 +18,7 @@ class _RatingTableState extends State<RatingTable> {
   int accessories;
   int total;
   bool isDark;
+  int screenType;
   @override
   void initState() {
     shirts = Random().nextInt(1000);
@@ -26,6 +27,7 @@ class _RatingTableState extends State<RatingTable> {
     accessories = Random().nextInt(1000);
     total = shirts + pants + jackets + accessories;
     isDark = widget.isDark;
+    screenType = widget.screenType;
     super.initState();
   }
 
@@ -34,7 +36,7 @@ class _RatingTableState extends State<RatingTable> {
     setState(() {
       isDark = widget.isDark;
     });
-
+    screenType = widget.screenType;
     super.didUpdateWidget(oldWidget);
   }
 
@@ -68,7 +70,7 @@ class _RatingTableState extends State<RatingTable> {
             padding: EdgeInsets.all(8.w),
             child: Text(
               index,
-              style: TextStyle(color: txColor, fontSize: 10.w),
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ),
         ),
@@ -77,7 +79,7 @@ class _RatingTableState extends State<RatingTable> {
             padding: EdgeInsets.all(8.w),
             child: Text(
               id,
-              style: TextStyle(color: txColor, fontSize: 10.w),
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ),
         ),
@@ -86,7 +88,7 @@ class _RatingTableState extends State<RatingTable> {
             padding: EdgeInsets.all(8.w),
             child: Text(
               qty,
-              style: TextStyle(color: txColor, fontSize: 10.w),
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ),
         ),
@@ -95,7 +97,7 @@ class _RatingTableState extends State<RatingTable> {
             padding: EdgeInsets.all(8.w),
             child: Text(
               date,
-              style: TextStyle(color: txColor, fontSize: 10.w),
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ),
         ),
@@ -104,7 +106,7 @@ class _RatingTableState extends State<RatingTable> {
             padding: EdgeInsets.all(8.w),
             child: Text(
               time,
-              style: TextStyle(color: txColor, fontSize: 10.w),
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ),
         ),
@@ -115,98 +117,91 @@ class _RatingTableState extends State<RatingTable> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 450.w,
-      height: 230.w,
+      padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: (isDark) ? Theme.of(context).primaryColor : Colors.white,
       ),
-      child: Table(
-        border: TableBorder.symmetric(inside: BorderSide(color: Colors.grey)),
-        columnWidths: {
-          0: FlexColumnWidth(1),
-          1: FlexColumnWidth(3),
-          2: FlexColumnWidth(2),
-          3: FlexColumnWidth(2),
-          4: FlexColumnWidth(2),
-        },
+      child: ListView(
+        physics: screenType == 2
+            ? new NeverScrollableScrollPhysics()
+            : new AlwaysScrollableScrollPhysics(),
         children: [
-          TableRow(
-              decoration: BoxDecoration(
-                  color:
-                      (isDark) ? Theme.of(context).primaryColor : Colors.white),
-              children: [
-                Center(
-                  child: Container(
-                    padding: EdgeInsets.all(8.w),
-                    child: Text(
-                      "#",
-                      style: TextStyle(
-                          color: (isDark) ? Colors.white : Colors.black,
-                          fontSize: 10.w,
-                          fontWeight: FontWeight.bold),
+          Table(
+            border:
+                TableBorder.symmetric(inside: BorderSide(color: Colors.grey)),
+            columnWidths: {
+              0: FlexColumnWidth(1),
+              1: FlexColumnWidth(3),
+              2: FlexColumnWidth(2),
+              3: FlexColumnWidth(3),
+              4: FlexColumnWidth(2),
+            },
+            children: [
+              TableRow(
+                  decoration: BoxDecoration(
+                      color: (isDark)
+                          ? Theme.of(context).primaryColor
+                          : Colors.white),
+                  children: [
+                    Center(
+                      child: Container(
+                        padding: EdgeInsets.all(8.w),
+                        child: Text(
+                          "#",
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    padding: EdgeInsets.all(8.w),
-                    child: Text(
-                      "Uniform ID".toUpperCase(),
-                      style: TextStyle(
-                          color: (isDark) ? Colors.white : Colors.black,
-                          fontSize: 10.w,
-                          fontWeight: FontWeight.bold),
+                    Center(
+                      child: Container(
+                        padding: EdgeInsets.all(8.w),
+                        child: Text(
+                          "Uniform ID".toUpperCase(),
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    padding: EdgeInsets.all(8.w),
-                    child: Text(
-                      "Qty".toUpperCase(),
-                      style: TextStyle(
-                          color: (isDark) ? Colors.white : Colors.black,
-                          fontSize: 10.w,
-                          fontWeight: FontWeight.bold),
+                    Center(
+                      child: Container(
+                        padding: EdgeInsets.all(8.w),
+                        child: Text(
+                          "Qty".toUpperCase(),
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    padding: EdgeInsets.all(8.w),
-                    child: Text(
-                      "Date".toUpperCase(),
-                      style: TextStyle(
-                          color: (isDark) ? Colors.white : Colors.black,
-                          fontSize: 10.w,
-                          fontWeight: FontWeight.bold),
+                    Center(
+                      child: Container(
+                        padding: EdgeInsets.all(8.w),
+                        child: Text(
+                          "Date".toUpperCase(),
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    padding: EdgeInsets.all(8.w),
-                    child: Text(
-                      "Time".toUpperCase(),
-                      style: TextStyle(
-                          color: (isDark) ? Colors.white : Colors.black,
-                          fontSize: 10.w,
-                          fontWeight: FontWeight.bold),
+                    Center(
+                      child: Container(
+                        padding: EdgeInsets.all(8.w),
+                        child: Text(
+                          "Time".toUpperCase(),
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ]),
-          _tableRowBuilder(
-              "1", "100000086", "$shirts", "2020/3/3", "10:30", 2, isDark),
-          _tableRowBuilder(
-              "2", "100000086", "$pants", "2020/3/3", "10:30", 1, isDark),
-          _tableRowBuilder(
-              "3", "100000086", "$jackets", "2020/3/3", "10:30", 2, isDark),
-          _tableRowBuilder(
-              "4", "100000086", "$pants", "2020/3/3", "10:30", 1, isDark),
+                  ]),
+              _tableRowBuilder(
+                  "1", "100000086", "$shirts", "2020/3/3", "10:30", 2, isDark),
+              _tableRowBuilder(
+                  "2", "100000086", "$pants", "2020/3/3", "10:30", 1, isDark),
+              _tableRowBuilder(
+                  "3", "100000086", "$jackets", "2020/3/3", "10:30", 2, isDark),
+              _tableRowBuilder(
+                  "4", "100000086", "$pants", "2020/3/3", "10:30", 1, isDark),
+            ],
+            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+          ),
         ],
-        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       ),
     );
   }

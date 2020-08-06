@@ -84,7 +84,7 @@ class _LastTenDetailsState extends State<LastTenDetails> {
                 ),
               ),
               Expanded(
-                flex: 2,
+                flex: screenType == 3 ? 2 : 4,
                 child: LineChartSample2(),
               ),
             ],

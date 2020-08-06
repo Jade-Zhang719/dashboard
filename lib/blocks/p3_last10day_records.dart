@@ -241,49 +241,55 @@ class _LastTenRecordsState extends State<LastTenRecords> {
                       color: Theme.of(context).cardColor,
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          margin: EdgeInsets.only(left: 20.w, top: 10.w),
-                          child: Row(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.blue,
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.only(left: 20.w, top: 10.w),
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.blue,
+                                  ),
+                                  margin: EdgeInsets.only(right: 20.w),
+                                  width: 20.w,
+                                  height: 20.w,
                                 ),
-                                margin: EdgeInsets.only(right: 20.w),
-                                width: 20.w,
-                                height: 20.w,
-                              ),
-                              Text(
-                                "Loan",
-                                style: Theme.of(context).textTheme.headline4,
-                              ),
-                            ],
+                                Text(
+                                  "Loan",
+                                  style: Theme.of(context).textTheme.headline4,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 20.w),
-                          child: Row(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.green,
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.only(left: 20.w),
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.green,
+                                  ),
+                                  margin: EdgeInsets.only(right: 20.w),
+                                  width: 20.w,
+                                  height: 20.w,
                                 ),
-                                margin: EdgeInsets.only(right: 20.w),
-                                width: 20.w,
-                                height: 20.w,
-                              ),
-                              Text(
-                                "Return",
-                                style: Theme.of(context).textTheme.headline4,
-                              ),
-                            ],
+                                Text(
+                                  "Return",
+                                  style: Theme.of(context).textTheme.headline4,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                        RecordsLineChart(),
+                        Expanded(
+                          flex: 5,
+                          child: RecordsLineChart(screenType: screenType),
+                        ),
                       ],
                     ),
                   ),

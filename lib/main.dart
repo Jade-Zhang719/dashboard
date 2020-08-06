@@ -75,11 +75,11 @@ class _MyAppState extends State<MyApp> {
                 ),
                 bodyText1: TextStyle(
                   color: isDark ? Colors.blue : Colors.blueGrey,
-                  fontSize: 10,
+                  fontSize: 12,
                 ),
                 bodyText2: TextStyle(
                   color: isDark ? Colors.white : Colors.blueGrey,
-                  fontSize: 10,
+                  fontSize: 12,
                 ),
               ),
             )
@@ -112,8 +112,9 @@ class _MyAppState extends State<MyApp> {
                       fontSize: 12,
                     ),
                     bodyText1: TextStyle(
-                      color: isDark ? Colors.blue : Colors.blueGrey,
+                      color: isDark ? Colors.white : Colors.blueGrey,
                       fontSize: 8,
+                      fontWeight: FontWeight.bold,
                     ),
                     bodyText2: TextStyle(
                       color: isDark ? Colors.white : Colors.blueGrey,
@@ -291,7 +292,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.blueGrey,
                     ),
                     Container(
-                      height: 360.h,
+                      height: 280.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 10.w, bottom: 10.w),
                       child: TodayLoan(
@@ -309,6 +310,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       margin: EdgeInsets.only(top: 10.w, bottom: 10.w),
                       child: RatingTable(
                         isDark: isDark,
+                        screenType: screenType,
                       ),
                     ),
                     Divider(
@@ -317,7 +319,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.blueGrey,
                     ),
                     Container(
-                      height: 380.h,
+                      height: 220.h,
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top: 10.w),
                       child: LastYearLaundry(),
@@ -421,6 +423,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   EdgeInsets.fromLTRB(10.w, 10.w, 20.w, 20.w),
                               child: RatingTable(
                                 isDark: isDark,
+                                screenType: screenType,
                               ),
                             ),
                           ),

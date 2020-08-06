@@ -51,14 +51,6 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
             padding: EdgeInsets.only(left: 20.w),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              // boxShadow: [
-              //   BoxShadow(
-              //     color: Colors.grey,
-              //     offset: Offset(2.0, 2.0),
-              //     blurRadius: 5.0,
-              //     spreadRadius: 2.0,
-              //   )
-              // ],
               color: (isDark) ? Theme.of(context).primaryColor : Colors.white,
             ),
             child: Row(
@@ -105,22 +97,11 @@ class _RangeDataLabelState extends State<RangeDataLabel> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            child: Text(
-                              "Total Stock On Hand",
-                              style: Theme.of(context).textTheme.headline1,
-                            ),
-                          ),
-                          Container(
-                            child: Text(
-                              "Loaned Items",
-                              style: Theme.of(context).textTheme.headline2,
-                            ),
-                          ),
-                        ],
+                      Container(
+                        child: Text(
+                          "Total Stock On Hand",
+                          style: Theme.of(context).textTheme.headline1,
+                        ),
                       ),
                       OptionButton(
                         txSize: 10.w,

@@ -41,18 +41,9 @@ class _GaugeForStockLevelState extends State<GaugeForStockLevel> {
       key: key,
       innerCirclePadding: 10.w,
       unitOfMeasurement: "Stock Level (%)",
-      unitOfMeasurementTextStyle: TextStyle(
-          color: (isDark) ? Colors.white : Colors.black,
-          fontWeight: FontWeight.bold,
-          fontSize: 10.w),
-      minMaxTextStyle: TextStyle(
-          color: (isDark) ? Colors.white : Colors.black,
-          fontWeight: FontWeight.bold,
-          fontSize: 5.w),
-      speedTextStyle: TextStyle(
-          color: (isDark) ? Colors.white : Colors.black,
-          fontWeight: FontWeight.bold,
-          fontSize: 24.w),
+      unitOfMeasurementTextStyle: Theme.of(context).textTheme.bodyText2,
+      minMaxTextStyle: Theme.of(context).textTheme.bodyText2,
+      speedTextStyle: Theme.of(context).textTheme.headline1,
       minSpeed: 0,
       maxSpeed: 100,
       speed: percentage,

@@ -20,6 +20,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
   @override
   void initState() {
     duration = Duration(milliseconds: 500);
+    screenType = widget.screenType;
     spots1 = [
       FlSpot(1, 0),
       FlSpot(2, 0),
@@ -44,9 +45,9 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
       FlSpot(9, 0),
       FlSpot(10, 0),
     ];
-    screenType = widget.screenType;
-    super.initState();
+
     _changeSpots();
+    super.initState();
   }
 
   Future<void> _changeSpots() async {
@@ -83,6 +84,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
   @override
   void didUpdateWidget(RecordsLineChart oldWidget) {
     duration = Duration(seconds: 0);
+    screenType = widget.screenType;
     spots1 = [
       FlSpot(1, 0),
       FlSpot(2, 0),
@@ -107,8 +109,9 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
       FlSpot(9, 0),
       FlSpot(10, 0),
     ];
+
     _changeSpots();
-    screenType = widget.screenType;
+
     super.didUpdateWidget(oldWidget);
   }
 
@@ -152,10 +155,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
         bottomTitles: SideTitles(
           showTitles: true,
           reservedSize: 15.w,
-          textStyle: TextStyle(
-            color: Colors.blueGrey,
-            fontSize: 8.w,
-          ),
+          textStyle: Theme.of(context).textTheme.bodyText2,
           margin: 10.w,
           getTitles: (value) {
             switch (value.toInt()) {
@@ -186,10 +186,7 @@ class _RecordsLineChartState extends State<RecordsLineChart> {
         leftTitles: SideTitles(
           showTitles: true,
           reservedSize: 20.w,
-          textStyle: TextStyle(
-            color: Colors.blueGrey,
-            fontSize: 12.w,
-          ),
+          textStyle: Theme.of(context).textTheme.bodyText2,
           margin: 10.w,
           getTitles: (value) {
             switch (value.toInt()) {

@@ -79,10 +79,6 @@ class RecordsBarChartState extends State<RecordsBarChart> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
-    bool isMobile = height > width;
     return Container(
       width: 840.w,
       decoration: BoxDecoration(
@@ -93,94 +89,91 @@ class RecordsBarChartState extends State<RecordsBarChart> {
         color: Theme.of(context).cardColor,
       ),
       padding: EdgeInsets.fromLTRB(20.w, 20.w, 20.w, 5.w),
-      child: BarChart(
-        BarChartData(
-          maxY: 20,
-          minY: 0,
-          titlesData: FlTitlesData(
-            show: true,
-            bottomTitles: SideTitles(
-              showTitles: true,
-              textStyle: TextStyle(
-                color: Color(0xff7589a2),
-                fontSize: isMobile ? 8.w : 14.w,
+      child: AspectRatio(
+        aspectRatio: 3,
+        child: BarChart(
+          BarChartData(
+            maxY: 20,
+            minY: 0,
+            titlesData: FlTitlesData(
+              show: true,
+              bottomTitles: SideTitles(
+                showTitles: true,
+                textStyle: Theme.of(context).textTheme.bodyText2,
+                margin: 10.w,
+                getTitles: (double value) {
+                  switch (value.toInt()) {
+                    // case 0:
+                    //   return '2019-07';
+                    case 1:
+                      return '2019-08';
+                    // case 2:
+                    //   return '2019-09';
+                    // case 3:
+                    //   return '2019-10';
+                    case 4:
+                      return '2019-11';
+                    // case 5:
+                    //   return '2019-12';
+                    // case 6:
+                    //   return '2020-01';
+                    case 7:
+                      return '2020-02';
+                    // case 8:
+                    //   return '2020-03';
+                    // case 9:
+                    //   return '2020-04';
+                    case 10:
+                      return '2020-05';
+                    // case 11:
+                    //   return '2020-06';
+                    default:
+                      return '';
+                  }
+                },
               ),
-              margin: 10.w,
-              getTitles: (double value) {
-                switch (value.toInt()) {
-                  // case 0:
-                  //   return '2019-07';
-                  case 1:
-                    return '2019-08';
-                  // case 2:
-                  //   return '2019-09';
-                  // case 3:
-                  //   return '2019-10';
-                  case 4:
-                    return '2019-11';
-                  // case 5:
-                  //   return '2019-12';
-                  // case 6:
-                  //   return '2020-01';
-                  case 7:
-                    return '2020-02';
-                  // case 8:
-                  //   return '2020-03';
-                  // case 9:
-                  //   return '2020-04';
-                  case 10:
-                    return '2020-05';
-                  // case 11:
-                  //   return '2020-06';
-                  default:
+              leftTitles: SideTitles(
+                showTitles: true,
+                textStyle: Theme.of(context).textTheme.bodyText2,
+                margin: 15.w,
+                reservedSize: 14.w,
+                getTitles: (value) {
+                  if (value == 0) {
+                    return '0';
+                  } else if (value == 10) {
+                    return '1K';
+                  } else if (value == 20) {
+                    return '5K';
+                  } else {
                     return '';
-                }
-              },
-            ),
-            leftTitles: SideTitles(
-              showTitles: true,
-              textStyle: TextStyle(
-                color: Color(0xff7589a2),
-                fontSize: 14.w,
+                  }
+                },
               ),
-              margin: 15.w,
-              reservedSize: 14.w,
-              getTitles: (value) {
-                if (value == 0) {
-                  return '0';
-                } else if (value == 10) {
-                  return '1K';
-                } else if (value == 20) {
-                  return '5K';
-                } else {
-                  return '';
-                }
+            ),
+            borderData: FlBorderData(
+              show: false,
+            ),
+            gridData: FlGridData(
+              show: true,
+              drawVerticalLine: true,
+              checkToShowHorizontalLine: (value) => value % 3 == 0,
+              getDrawingHorizontalLine: (value) {
+                return FlLine(
+                  color: Colors.grey[400],
+                  strokeWidth: 1,
+                );
+              },
+              getDrawingVerticalLine: (value) {
+                return FlLine(
+                  color: Colors.grey[400],
+                  strokeWidth: 1,
+                );
               },
             ),
+            barGroups: barGroups,
           ),
-          borderData: FlBorderData(
-            show: false,
-          ),
-          gridData: FlGridData(
-            show: true,
-            drawVerticalLine: true,
-            checkToShowHorizontalLine: (value) => value % 3 == 0,
-            getDrawingHorizontalLine: (value) {
-              return FlLine(
-                color: Colors.grey[400],
-                strokeWidth: 1,
-              );
-            },
-            getDrawingVerticalLine: (value) {
-              return FlLine(
-                color: Colors.grey[400],
-                strokeWidth: 1,
-              );
-            },
-          ),
-          barGroups: barGroups,
+          swapAnimationDuration: duration,
         ),
-        swapAnimationDuration: duration,
       ),
     );
   }

@@ -108,11 +108,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
         bottomTitles: SideTitles(
           showTitles: true,
           reservedSize: 22,
-          textStyle: TextStyle(
-            color: Colors.blueGrey,
-            fontWeight: FontWeight.bold,
-            fontSize: 12.w,
-          ),
+          textStyle: Theme.of(context).textTheme.bodyText2,
           getTitles: (value) {
             switch (value.toInt()) {
               case 1:
@@ -134,11 +130,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
         leftTitles: SideTitles(
           showTitles: true,
           reservedSize: 15.w,
-          textStyle: TextStyle(
-            color: Colors.blueGrey,
-            fontWeight: FontWeight.bold,
-            fontSize: 8.w,
-          ),
+          textStyle: Theme.of(context).textTheme.bodyText2,
           getTitles: (value) {
             switch (value.toInt()) {
               case 1:
